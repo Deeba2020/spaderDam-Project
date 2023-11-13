@@ -1,5 +1,7 @@
+
+//make this one unicode
 public enum SuitValue {
-    TWO,
+    TWO ,
     THREE,
     FOUR,
     FIVE,
