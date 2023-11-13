@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.*;
 
 public class Player {
 
@@ -8,7 +9,7 @@ public class Player {
     private ArrayList<Card> cards;
 
     private ArrayList<Integer> scores;
-
+    private Dealer deal;
 
     //    private ArrayList<Deck>decks;
     public Player(String name) {
@@ -57,14 +58,19 @@ public class Player {
 //
 //    }
 
+
+
+
+
+  List<Card> trickCards = new ArrayList<>(); 
+
+public void recieveCard(){
+    for(Card choosenCard: cards){
+    trickCards.add(choosenCard);
+    }
+    
+    }
 }
-
-
-
-
-
-
-
 
     //recieveCard
     //addCard() floor
