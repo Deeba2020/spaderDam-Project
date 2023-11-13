@@ -1,13 +1,16 @@
 import java.util.PrimitiveIterator;
 
-public class Card {
-
+public class Card{
+    //card is single card representation
     private Suit suits;
     private SuitValue suitValue;
+   // private  final Card START_CARD;
 
-    public Card(Suit face, SuitValue suitValue){
-        this.suits =face;
-        this.suitValue = suitValue;
+    public Card(Suit suit, SuitValue suitValue){
+       suits=suit;
+       this.suitValue=suitValue;
+      // START_CARD= new Card(Suit.CLUB,SuitValue.TWO);
+
     }
 
     public Suit getSuits() {
@@ -25,4 +28,8 @@ public class Card {
     public void setSuitValue(SuitValue suitValue) {
         this.suitValue = suitValue;
     }
+
+//    public Card getSTART_CARD() {
+//        return START_CARD;
+//    }
 }
