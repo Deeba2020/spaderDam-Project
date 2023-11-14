@@ -34,7 +34,7 @@ public class Player {
     public void displayHand() {
         System.out.println(name + " has following cards: ");
         for (Card currentCard : cards) {
-            System.out.println(currentCard.getSuitValue() + " of " + currentCard.getSuits().getUnicode());
+            System.out.println(currentCard.getSuitValue().getSuitChar() + " of " + currentCard.getSuits().getUnicode());
         }
     }
 
@@ -62,11 +62,11 @@ public class Player {
 
 
 
-  List<Card> trickCards = new ArrayList<>(); 
+  List<Card> playedTrickCards = new ArrayList<>(); 
 
 public void recieveCard(){
     for(Card choosenCard: cards){
-    trickCards.add(choosenCard);
+    playedTrickCards.add(choosenCard);
     }
     
     }
