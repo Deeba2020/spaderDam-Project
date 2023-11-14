@@ -42,7 +42,6 @@ public class Player {
         trickCards.add(card);
         System.out.println(card.getSuitValue()+"of"+  card.getSuits()+"added");
         displayMiddle();
-
         }
 
     public ArrayList<Card> displayMiddle() {
@@ -58,7 +57,7 @@ public class Player {
 
     //need to remove unnecessary prints in last stage
     public void  startPlay(Player player) {
-        //System.out.println("Looking for Two of Club");
+
         char smileyFace = '\u263A';
         Card startCard = new Card(Suit.CLUB,SuitValue.TWO);
 
@@ -83,6 +82,7 @@ public class Player {
 
             }
     }
+
 
 //  List<Card> trickCards = new ArrayList<>();
 
