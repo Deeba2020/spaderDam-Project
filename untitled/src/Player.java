@@ -38,38 +38,60 @@ public class Player {
         }
     }
 
-    public void  startPlay() {
+
+    //need to remove unnecessary prints in last stage
+    public void  startPlay(Player player) {
+        //System.out.println("Looking for Two of Club");
+        char smileyFace = '\u263A';
         Card startCard = new Card(Suit.CLUB,SuitValue.TWO);
-        for (Card currentCard : cards) {
-            if (cards.isEmpty()) {
-                System.out.println("no cards in hand");
+
+        System.out.println(player.getName()+" current hand size is: " + player.getCards().size());
+        System.out.println("Looking for: " + startCard.getSuitValue()+" of "+ startCard.getSuits().getUnicode());
+
+        for (int i = 0; i<13 ; i++) {
+
+            if (player.getCards().isEmpty()) {
+                System.out.println("no cards in hand to play with");
             }
 
-            else if (cards.contains(startCard)){
+            else if (player.getCards().contains(startCard)){
+
+                System.out.println("the player "+player.getName()+" has the card"+" " +startCard.getSuitValue() + " of " + startCard.getSuits().getUnicode()+" and can start the game "+smileyFace);
+                player.getCards().remove(startCard);
+                System.out.println("Removed card in player's hand: " + startCard.getSuitValue() + " of " + startCard.getSuits().getUnicode());
+                System.out.println(player.getName() + "'s hand after removing TWO of CLUB is: ");
+                player.displayHand();
+            }
 
             }
-            else if (currentCard.getSuitValue().equals(Suit.CLUB.getUnicode()) && (currentCard.getSuitValue().equals(SuitValue.TWO))) {
-
-                cards.remove(currentCard);}
-            else if (!cards.isEmpty()) {
-                cards.remove(0);
-            }
-        }
-
     }
 
 
 
 
 
-  List<Card> trickCards = new ArrayList<>(); 
 
-public void recieveCard(){
-    for(Card choosenCard: cards){
-    trickCards.add(choosenCard);
-    }
-    
-    }
+
+
+
+
+
+
+
+//  cards.remove(currentCard);
+//          else if (!cards.isEmpty()) {
+//          cards.remove(0);
+
+
+
+//  List<Card> trickCards = new ArrayList<>();
+
+//public void recieveCard(){
+//    for(Card choosenCard: cards){
+//    trickCards.add(choosenCard);
+//    }
+//
+//    }
 }
 
     //recieveCard

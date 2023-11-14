@@ -28,10 +28,10 @@ public class Main {
         p3.displayHand();
         p4.displayHand();
 
-        p1.startPlay();
-        p2.startPlay();
-        p3.startPlay();
-        p4.startPlay();
+        p1.startPlay(p1);
+        p2.startPlay(p2);
+        p3.startPlay(p3);
+        p4.startPlay(p4);
 
 
 
