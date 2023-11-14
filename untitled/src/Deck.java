@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.*;
 
 public class Deck  {
       //Deck is collection of cards
@@ -36,11 +37,16 @@ public class Deck  {
     //update this one to be the one from Samra
     public ArrayList<Card> createDeck(){
          cards.clear();
-        for (int i = 0; i < Suit.values().length; i++){
-            for(int j = 0; j < SuitValue.values().length; j++){
-                cards.add(new Card(Suit.values()[i], SuitValue.values()[j]));
+         for(Suit suit: Suit.values()){
+            for (SuitValue rank: SuitValue.values()){
+                cards.add(new Card(suit, rank));
             }
-        }
+         }
+        // for (int i = 0; i < Suit.values().length; i++){
+        //     for(int j = 0; j < SuitValue.values().length; j++){
+        //         cards.add(new Card(Suit.values()[i], SuitValue.values()[j]));
+        //     }
+        // }
         return cards;
     }
 
@@ -48,7 +54,7 @@ public class Deck  {
 
     public void displayDeck() {
         for (Card card : cards) {
-            System.out.println(card.getSuitValue()+" of "+card.getSuits().getUnicode());
+            System.out.println(card.getSuitValue().getSuitChar()+" of "+card.getSuits().getUnicode());
         }
     }
 
@@ -57,9 +63,6 @@ public class Deck  {
         Collections.shuffle(cards);
         displayDeck();
     }
-
-
-
 
 
 
