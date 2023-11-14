@@ -38,25 +38,25 @@ public class Player {
         }
     }
 
-//    public void  startPlay() {
-//        Card startCard = new Card(Suit.CLUB,SuitValue.TWO);
-//        for (Card currentCard : cards) {
-//            if (cards.isEmpty()) {
-//                System.out.println("no cards in hand");
-//            }
-//
-//            else if (cards.contains(startCard)){
-//
-//            }
-//            else if (currentCard.getSuitValue().equals(Suit.CLUB.getUnicode()) && (currentCard.getSuitValue().equals(SuitValue.TWO))) {
-//
-//                cards.remove(currentCard);}
-//            else if (!cards.isEmpty()) {
-//                cards.remove(0);
-//            }
-//        }
-//
-//    }
+    public void  startPlay() {
+        Card startCard = new Card(Suit.CLUB,SuitValue.TWO);
+        for (Card currentCard : cards) {
+            if (cards.isEmpty()) {
+                System.out.println("no cards in hand");
+            }
+
+            else if (cards.contains(startCard)){
+
+            }
+            else if (currentCard.getSuitValue().equals(Suit.CLUB.getUnicode()) && (currentCard.getSuitValue().equals(SuitValue.TWO))) {
+
+                cards.remove(currentCard);}
+            else if (!cards.isEmpty()) {
+                cards.remove(0);
+            }
+        }
+
+    }
 
 
 

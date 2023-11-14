@@ -7,7 +7,7 @@ public class Card{
    // private  final Card START_CARD;
 
     public Card(Suit suit, SuitValue suitValue){
-       suits=suit;
+       suits= suit;
        this.suitValue=suitValue;
       // START_CARD= new Card(Suit.CLUB,SuitValue.TWO);
 
