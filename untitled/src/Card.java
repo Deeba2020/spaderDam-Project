@@ -53,21 +53,4 @@ public class Card{
 
 
 
-
-//    @Override
-//    public boolean equals(Object obj) {
-//        if (this == obj) return true;
-//        if (obj == null || getClass() != obj.getClass()) return false;
-//
-//        Card otherCard = (Card) obj;
-//        return suits == otherCard.suits && suitValue == otherCard.suitValue;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(suits, suitValue);
-//    }
-
-
-
 }

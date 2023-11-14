@@ -13,8 +13,6 @@ public class Trick {
 //    }
 
 
-
-
 //    public boolean isTrickEnded (Player player){
 //        boolean trickEnded ;
 //

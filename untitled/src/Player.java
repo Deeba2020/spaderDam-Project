@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.*;
 
 public class Player {
 
     private String name;
     //private int score;
     private ArrayList<Card> cards;
+    private ArrayList<Card> trickCards;
 
     private ArrayList<Integer> scores;
     private Dealer deal;
@@ -16,6 +15,7 @@ public class Player {
         this.name = name;
         scores = null;
         cards = new ArrayList<>();
+        trickCards = new ArrayList<>();
     }
 
     public String getName() {
@@ -38,6 +38,23 @@ public class Player {
         }
     }
 
+    public void addCardMiddle(Card card){
+        trickCards.add(card);
+        System.out.println(card.getSuitValue()+"of"+  card.getSuits()+"added");
+        displayMiddle();
+
+        }
+
+    public ArrayList<Card> displayMiddle() {
+        System.out.println("discard pile has following cards: ");
+        for (Card currentCard : trickCards) {
+            System.out.println(currentCard.getSuitValue() + " of " + currentCard.getSuits().getUnicode());
+        }
+        return trickCards;
+    }
+        
+
+    
 
     //need to remove unnecessary prints in last stage
     public void  startPlay(Player player) {
@@ -57,6 +74,7 @@ public class Player {
             else if (player.getCards().contains(startCard)){
 
                 System.out.println("the player "+player.getName()+" has the card"+" " +startCard.getSuitValue() + " of " + startCard.getSuits().getUnicode()+" and can start the game "+smileyFace);
+                player.addCardMiddle(startCard);
                 player.getCards().remove(startCard);
                 System.out.println("Removed card in player's hand: " + startCard.getSuitValue() + " of " + startCard.getSuits().getUnicode());
                 System.out.println(player.getName() + "'s hand after removing TWO of CLUB is: ");
@@ -65,24 +83,6 @@ public class Player {
 
             }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-//  cards.remove(currentCard);
-//          else if (!cards.isEmpty()) {
-//          cards.remove(0);
-
-
 
 //  List<Card> trickCards = new ArrayList<>();
 
@@ -93,53 +93,6 @@ public class Player {
 //
 //    }
 }
-
-    //recieveCard
-    //addCard() floor
-
-
-
-
-//    public int getScore() {
-//        return score;
-//    }
-//
-//    public void setScore(int score) {
-//        this.score = score;
-//    }
-//
-
-//
-//    public void setCards(ArrayList<Card> cards) {
-//        this.cards = cards;
-//    }
-
-
-//
-
-//    public int shuffleCards (ArrayList<Card>cards){
-//        cards.
-//        return;
-//    }
-
-//    public Card playCard() {
-//        // Check if the player has any cards to play
-//        if (cards.isEmpty()) {
-//            System.out.println("No cards in hand.");
-//            return null;  // or throw an exception
-//        }
-//
-//        // For simplicity, let's assume the player plays the first card in their hand.
-//        Card playedCard = cards.get(0);
-//
-//        // Remove the played card from the player's hand
-//        cards.remove(playedCard);
-//
-//        System.out.println(name + " played: " + playedCard.getSuitValue() + " of " + playedCard.getSuits().getUnicode());
-//
-//        return playedCard;
-//    }
-
 
 
 
