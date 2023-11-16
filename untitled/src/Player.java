@@ -44,6 +44,10 @@ public class Player {
         displayMiddle();
         }
 
+
+
+
+
     public ArrayList<Card> displayMiddle() {
         System.out.println("discard pile has following cards: ");
         for (Card currentCard : trickCards) {
@@ -51,7 +55,7 @@ public class Player {
         }
         return trickCards;
     }
-        
+
 
     
 
@@ -84,14 +88,7 @@ public class Player {
     }
 
 
-//  List<Card> trickCards = new ArrayList<>();
 
-//public void recieveCard(){
-//    for(Card choosenCard: cards){
-//    trickCards.add(choosenCard);
-//    }
-//
-//    }
 }
 
 
