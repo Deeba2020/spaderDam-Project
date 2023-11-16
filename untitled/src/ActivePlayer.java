@@ -1,0 +1,2 @@
+public class ActivePlayer {
+}
