@@ -20,10 +20,12 @@ public class Main {
         AIOne d = new AIOne();
 
         Dealer dealer = new Dealer();
-        dealer.addPlayer(a);
-        dealer.addPlayer(b);
-        dealer.addPlayer(c);
-        dealer.addPlayer(d);
+
+        dealer.addPlayer(a,b,c,d);
+//        dealer.addPlayer(a);
+//        dealer.addPlayer(b);
+//        dealer.addPlayer(c);
+//        dealer.addPlayer(d);
 
         dealer.dealCards(a,b,c,d);
 

@@ -9,6 +9,15 @@ public class Player {
 
     private ArrayList<Integer> scores;
     private Dealer deal;
+    Card startCard = new Card(Suit.CLUB,SuitValue.TWO);
+
+    public Card getStartCard() {
+        return startCard;
+    }
+
+    public void setStartCard(Card startCard) {
+        this.startCard = startCard;
+    }
 
     //    private ArrayList<Deck>decks;
     public Player() {
@@ -61,7 +70,7 @@ public class Player {
     public void  startPlay(Player player) {
 
         char smileyFace = '\u263A';
-        Card startCard = new Card(Suit.CLUB,SuitValue.TWO);
+//        Card startCard = new Card(Suit.CLUB,SuitValue.TWO);
 
         System.out.println( "  player.getName() "+" current hand size is: " + player.getCards().size());
         System.out.println("Looking for: " + startCard.getSuitValue()+" of "+ startCard.getSuits().getUnicode());
