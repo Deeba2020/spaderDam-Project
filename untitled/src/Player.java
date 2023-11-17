@@ -34,13 +34,13 @@ public class Player {
     public void displayHand() {
         System.out.println( " name   "+ " has following cards: ");
         for (Card currentCard : cards) {
-            System.out.println(currentCard.getSuitValue() + " of " + currentCard.getSuits().getUnicode());
+            System.out.println(currentCard.getSuitValue().getSuitChar() + " of " + currentCard.getSuits().getUnicode());
         }
     }
 
     public void addCardMiddle(Card card){
         trickCards.add(card);
-        System.out.println(card.getSuitValue()+" of "+  card.getSuits()+" added");
+        System.out.println(card.getSuitValue().getSuitChar()+" of "+  card.getSuits()+" added");
         displayMiddle();
         }
 
@@ -49,7 +49,7 @@ public class Player {
     public ArrayList<Card> displayMiddle() {
         System.out.println("discard pile has following cards: ");
         for (Card currentCard : trickCards) {
-            System.out.println(currentCard.getSuitValue() + " of " + currentCard.getSuits().getUnicode());
+            System.out.println(currentCard.getSuitValue().getSuitChar()+ " of " + currentCard.getSuits().getUnicode());
         }
         return trickCards;
     }
