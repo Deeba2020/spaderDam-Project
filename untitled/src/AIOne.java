@@ -41,7 +41,7 @@ public class AIOne extends AIPlayers{
             else if (player.getCards().contains(startCard)){
 
                 System.out.println("the player "+  name + " has the card "+" " +startCard.getSuitValue() + " of " + startCard.getSuits().getUnicode()+" and can start the game "+smileyFace);
-                player.addCardMiddle(startCard);
+                player.addToPile(startCard);
                 player.getCards().remove(startCard);
                 System.out.println("Removed card in player's hand: " + startCard.getSuitValue() + " of " + startCard.getSuits().getUnicode());
                 System.out.println(  name    + "'s hand after removing TWO of CLUB is: ");

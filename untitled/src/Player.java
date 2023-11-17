@@ -38,7 +38,7 @@ public class Player {
         }
     }
 
-    public void addCardMiddle(Card card){
+    public void addToPile(Card card){
         trickCards.add(card);
         System.out.println(card.getSuitValue()+" of "+  card.getSuits()+" added");
         displayMiddle();
@@ -75,7 +75,7 @@ public class Player {
             else if (player.getCards().contains(startCard)){
 
                 System.out.println("the player "+  "player.getName()" + " has the card "+" " +startCard.getSuitValue() + " of " + startCard.getSuits().getUnicode()+" and can start the game "+smileyFace);
-                player.addCardMiddle(startCard);
+                player.addToPile(startCard);
                 player.getCards().remove(startCard);
                 System.out.println("Removed card in player's hand: " + startCard.getSuitValue() + " of " + startCard.getSuits().getUnicode());
                 System.out.println(  " player.getName()"     + "'s hand after removing TWO of CLUB is: ");
