@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.PrimitiveIterator;
 
 public class Card{
@@ -7,7 +8,7 @@ public class Card{
    // private  final Card START_CARD;
 
     public Card(Suit suit, SuitValue suitValue){
-       suits=suit;
+       suits= suit;
        this.suitValue=suitValue;
       // START_CARD= new Card(Suit.CLUB,SuitValue.TWO);
 
@@ -29,7 +30,27 @@ public class Card{
         this.suitValue = suitValue;
     }
 
-//    public Card getSTART_CARD() {
-//        return START_CARD;
-//    }
+
+    //overriding equals method of objects
+    public boolean equals(Object otherObj) {
+
+        boolean isEqual = false;
+
+        if (otherObj == this){
+            isEqual= true;
+        } else if (otherObj==null) {
+            isEqual=false;
+        } else if (otherObj instanceof Card) {
+            Card otherPlayer = (Card) otherObj;
+            isEqual = this.suits.equals(otherPlayer.suits) && this.suitValue.equals(otherPlayer.getSuitValue());
+        } else {
+            isEqual= false;
+        }
+
+        return isEqual;
+    }
+
+
+
+
 }

@@ -72,8 +72,6 @@ public boolean isValidSuit(Player player, Suit leadingSuit){
 //    }
 
 
-
-
 //    public boolean isTrickEnded (Player player){
 //        boolean trickEnded ;
 //

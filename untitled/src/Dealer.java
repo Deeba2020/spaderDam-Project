@@ -22,7 +22,7 @@ public class Dealer {
     }
 
 
-    public void dealCards(Player p1,Player p2,Player p3, Player p4) {
+    public void dealCards(Player p1, Player p2, Player p3, Player p4) {
         deck.shuffleDeck();
 
         for (int i = 0; i < MAX_DEAL; i++) {
