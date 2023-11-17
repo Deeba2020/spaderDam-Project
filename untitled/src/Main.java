@@ -39,9 +39,9 @@ public class Main {
 
 
         ActivePlayer a = new ActivePlayer(userName);
-        AIThree b = new AIThree("b");
-        AITwo c = new AITwo("c");
-        AIOne d = new AIOne("d");
+        AIThree b = new AIThree();
+        AITwo c = new AITwo();
+        AIOne d = new AIOne();
 
         Dealer dealer = new Dealer();
         dealer.addPlayer(a);

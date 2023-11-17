@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Player {
 
-    private String name;
-    //private int score;
+//    private String name;
+//    private int score;
     private ArrayList<Card> cards;
     private ArrayList<Card> trickCards;
 
@@ -11,20 +11,20 @@ public class Player {
     private Dealer deal;
 
     //    private ArrayList<Deck>decks;
-    public Player(String name) {
-        this.name = name;
+    public Player() {
+//        this.name = name;
         scores = null;
         cards = new ArrayList<>();
         trickCards = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     public ArrayList<Card> getCards() {
         return cards;
@@ -32,7 +32,7 @@ public class Player {
 
 
     public void displayHand() {
-        System.out.println(name + " has following cards: ");
+        System.out.println( " name   "+ " has following cards: ");
         for (Card currentCard : cards) {
             System.out.println(currentCard.getSuitValue() + " of " + currentCard.getSuits().getUnicode());
         }
@@ -63,7 +63,7 @@ public class Player {
         char smileyFace = '\u263A';
         Card startCard = new Card(Suit.CLUB,SuitValue.TWO);
 
-        System.out.println(player.getName()+" current hand size is: " + player.getCards().size());
+        System.out.println( "  player.getName() "+" current hand size is: " + player.getCards().size());
         System.out.println("Looking for: " + startCard.getSuitValue()+" of "+ startCard.getSuits().getUnicode());
 
         for (int i = 0; i<13 ; i++) {
@@ -74,12 +74,13 @@ public class Player {
 
             else if (player.getCards().contains(startCard)){
 
-                System.out.println("the player "+player.getName()+" has the card "+" " +startCard.getSuitValue() + " of " + startCard.getSuits().getUnicode()+" and can start the game "+smileyFace);
+                System.out.println("the player "+  "player.getName()" + " has the card "+" " +startCard.getSuitValue() + " of " + startCard.getSuits().getUnicode()+" and can start the game "+smileyFace);
                 player.addCardMiddle(startCard);
                 player.getCards().remove(startCard);
                 System.out.println("Removed card in player's hand: " + startCard.getSuitValue() + " of " + startCard.getSuits().getUnicode());
-                System.out.println(player.getName() + "'s hand after removing TWO of CLUB is: ");
+                System.out.println(  " player.getName()"     + "'s hand after removing TWO of CLUB is: ");
                 player.displayHand();
+
             }
 
             }
