@@ -1,10 +1,13 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Player {
 
 //    private String name;
 //    private int score;
     private ArrayList<Card> cards;
+    Queue<Integer> pileCards = new LinkedList<>();
     private ArrayList<Card> trickCards;
 
     private ArrayList<Integer> scores;
@@ -13,6 +16,7 @@ public class Player {
 
     public Card getStartCard() {
         return startCard;
+
     }
 
     public void setStartCard(Card startCard) {
@@ -52,6 +56,13 @@ public class Player {
         System.out.println(card.getSuitValue()+" of "+  card.getSuits()+" added");
         displayMiddle();
         }
+
+    public void addCardPile(ArrayList<Card>card){
+        for (Card cards : cards)
+        pileCards.offer(0);
+        //System.out.println(card.getSuitValue()+" of "+  card.getSuits()+" added");
+        displayMiddle();
+    }
 
 
 

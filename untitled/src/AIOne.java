@@ -1,10 +1,14 @@
+import java.util.ArrayList;
+
 public class AIOne extends AIPlayers{
 
     String name;
+    private ArrayList<Card>aiOneCard;
 
     public AIOne(){
         super();
         this.name = "AI-One";
+        aiOneCard=new ArrayList<>();
     }
 
     public String getName() {
@@ -52,4 +56,11 @@ public class AIOne extends AIPlayers{
         }
     }
 
+    public ArrayList<Card> getAiOneCard() {
+        return aiOneCard;
+    }
+
+    public void setAiOneCard(ArrayList<Card> aiOneCard) {
+        this.aiOneCard = aiOneCard;
+    }
 }

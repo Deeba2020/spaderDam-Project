@@ -15,9 +15,9 @@ public class Main {
 
 
         ActivePlayer a = new ActivePlayer(userName);
-        AIThree b = new AIThree();
+        AIOne b = new AIOne();
         AITwo c = new AITwo();
-        AIOne d = new AIOne();
+        AIThree d = new AIThree();
 
         Dealer dealer = new Dealer();
 

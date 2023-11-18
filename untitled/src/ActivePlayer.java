@@ -1,11 +1,15 @@
+import java.util.ArrayList;
+
 public class ActivePlayer extends Player {
 
 
     String name;
+    private ArrayList<Card>activeCard;
 
     public ActivePlayer(String name){
         super();
         this.name=name;
+        activeCard = new ArrayList<>();
     }
 
 
@@ -15,6 +19,7 @@ public class ActivePlayer extends Player {
             System.out.println(currentCard.getSuitValue() + " of " + currentCard.getSuits().getUnicode());
         }
     }
+
 
     @Override
     public void startPlay(Player player) {
@@ -44,9 +49,17 @@ public class ActivePlayer extends Player {
         }
     }
 
+    @Override
+    public void addCardPile(ArrayList<Card> activeCard) {
+        for (Card cards : activeCard) {
+            if (cards.equals(startCard)){
 
-
-
+            }
+        }
+            pileCards.offer(0);
+        //System.out.println(card.getSuitValue()+" of "+  card.getSuits()+" added");
+        displayMiddle();
+    }
 
 
 
