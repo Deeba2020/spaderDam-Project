@@ -14,14 +14,17 @@ public class Main {
 //        System.out.println("round one");
 
 
-        ActivePlayer a = new ActivePlayer(userName);
-        AIOne b = new AIOne();
+
+        Player a = new ActivePlayer(userName);
+        Player b = new AIOne();
         AITwo c = new AITwo();
         AIThree d = new AIThree();
 
         Dealer dealer = new Dealer();
 
         dealer.addPlayer(a,b,c,d);
+        //dealer.checkPlayer();
+
 //        dealer.addPlayer(a);
 //        dealer.addPlayer(b);
 //        dealer.addPlayer(c);
@@ -29,15 +32,25 @@ public class Main {
 
         dealer.dealCards(a,b,c,d);
 
+
         a.displayHand();
         b.displayHand();
         c.displayHand();
         d.displayHand();
 
-        a.startPlay(a);
-        b.startPlay(b);
-        c.startPlay(c);
-        d.startPlay(d);
+//        a.startPlay(a);
+//        b.startPlay(b);
+//        c.startPlay(c);
+//        d.startPlay(d);
+        dealer.nextPlayer();
+
+        TrickRule t = new TrickRule(a);
+        t.checkSuit();
+
+
+
+
+
 
 
 

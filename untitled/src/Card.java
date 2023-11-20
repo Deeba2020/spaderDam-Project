@@ -41,14 +41,22 @@ public class Card{
         } else if (otherObj==null) {
             isEqual=false;
         } else if (otherObj instanceof Card) {
-            Card otherPlayer = (Card) otherObj;
-            isEqual = this.suits.equals(otherPlayer.suits) && this.suitValue.equals(otherPlayer.getSuitValue());
+            Card otherCard = (Card) otherObj;
+            isEqual = this.suits.equals(otherCard.suits) && this.suitValue.equals(otherCard.getSuitValue());
         } else {
-            isEqual= false;
         }
 
         return isEqual;
     }
+
+
+
+
+
+
+
+
+
 
 
 
