@@ -8,12 +8,9 @@ public class Main {
         Scanner input = new Scanner(System.in);
         String userName = input.nextLine();
 
-
         System.out.println("name of the active player is "+ userName);
 
 //        System.out.println("round one");
-
-
 
         Player a = new ActivePlayer(userName);
         Player b = new AIOne();
@@ -23,12 +20,6 @@ public class Main {
         Dealer dealer = new Dealer();
 
         dealer.addPlayer(a,b,c,d);
-        //dealer.checkPlayer();
-
-//        dealer.addPlayer(a);
-//        dealer.addPlayer(b);
-//        dealer.addPlayer(c);
-//        dealer.addPlayer(d);
 
         dealer.dealCards(a,b,c,d);
 
@@ -38,19 +29,7 @@ public class Main {
         c.displayHand();
         d.displayHand();
 
-//        a.startPlay(a);
-//        b.startPlay(b);
-//        c.startPlay(c);
-//        d.startPlay(d);
         dealer.nextPlayer();
-
-        TrickRule t = new TrickRule(a);
-        t.checkSuit();
-
-
-
-
-
 
 
 

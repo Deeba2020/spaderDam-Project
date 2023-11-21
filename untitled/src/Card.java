@@ -5,37 +5,27 @@ public class Card{
     //card is single card representation
     private Suit suits;
     private SuitValue suitValue;
-   // private  final Card START_CARD;
+
 
     public Card(Suit suit, SuitValue suitValue){
        suits= suit;
        this.suitValue=suitValue;
-      // START_CARD= new Card(Suit.CLUB,SuitValue.TWO);
-
     }
 
     public Suit getSuits() {
         return suits;
     }
 
-    public void setSuits(Suit suits) {
-        this.suits = suits;
-    }
 
     public SuitValue getSuitValue() {
         return suitValue;
     }
 
-    public void setSuitValue(SuitValue suitValue) {
-        this.suitValue = suitValue;
-    }
 
 
-    //overriding equals method of objects
+    //overriding equals method of objects to find equal cards
     public boolean equals(Object otherObj) {
-
         boolean isEqual = false;
-
         if (otherObj == this){
             isEqual= true;
         } else if (otherObj==null) {
@@ -45,7 +35,6 @@ public class Card{
             isEqual = this.suits.equals(otherCard.suits) && this.suitValue.equals(otherCard.getSuitValue());
         } else {
         }
-
         return isEqual;
     }
 

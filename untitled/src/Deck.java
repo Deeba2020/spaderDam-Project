@@ -19,18 +19,9 @@ public class Deck  {
         return suit;
     }
 
-    public void setSuit(Suit suit) {
-        this.suit = suit;
-    }
-
     public SuitValue getSuitValue() {
         return suitValue;
     }
-
-    public void setSuitValue(SuitValue suitValue) {
-        this.suitValue = suitValue;
-    }
-
 
 
     //update this one to be the one from Samra
@@ -58,8 +49,6 @@ public class Deck  {
         displayDeck();
     }
 
-//    @Override
-//    public String toString() {
-//        return getSuitValue() + " of " + getSuit();}
+
 
 }
