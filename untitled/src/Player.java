@@ -5,15 +5,14 @@ import java.util.Queue;
 public class Player {
     private String name;
     private ArrayList<Card> cards;
-    Queue<Integer> pileCards = new LinkedList<>();
-    private ArrayList<Card> trickCards;
+    Queue<Card> pileCards;
     private ArrayList<Integer> scores;
 
 
     public Player() {
         scores = null;
         cards = new ArrayList<>();
-        trickCards = new ArrayList<>();
+        pileCards = new LinkedList<>();
     }
 
     public String getName() {
@@ -33,18 +32,18 @@ public class Player {
     }
 
     public void addCardTrickPile(Card card){
-        trickCards.add(card);
+        pileCards.add(card);
         System.out.println(card.getSuitValue()+" of "+  card.getSuits()+" added to the trick pile");
         displayTrickPile();
         }
 
 
-    public ArrayList<Card> displayTrickPile() {
+    public Queue<Card> displayTrickPile() {
         System.out.println("Trick pile has following cards: ");
-        for (Card currentCard : trickCards) {
+        for (Card currentCard : pileCards) {
             System.out.println(currentCard.getSuitValue() + " of " + currentCard.getSuits().getUnicode());
         }
-        return trickCards;
+        return pileCards;
     }
 
 

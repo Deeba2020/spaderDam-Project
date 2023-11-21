@@ -14,8 +14,8 @@ public class Main {
 
         Player a = new ActivePlayer(userName);
         Player b = new AIOne();
-        AITwo c = new AITwo();
-        AIThree d = new AIThree();
+        Player c = new AITwo();
+        Player d = new AIThree();
 
         Dealer dealer = new Dealer();
 
@@ -29,7 +29,10 @@ public class Main {
         c.displayHand();
         d.displayHand();
 
-        dealer.nextPlayer();
+        FirstTrick firstTrick = new FirstTrick(dealer.getPlayers());
+        firstTrick.nextPlayer();
+
+
 
 
 
