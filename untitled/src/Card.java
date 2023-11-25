@@ -29,8 +29,10 @@ public class Card{
     public void setSuitValue(SuitValue suitValue) {
         this.suitValue = suitValue;
     }
-
-
+    public void printCard(){
+        
+System.out.println(this.suitValue.getRankValue() + " OF " +  this.suits.name() );
+    }
     //overriding equals method of objects
     public boolean equals(Object otherObj) {
 

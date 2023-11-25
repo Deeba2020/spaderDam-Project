@@ -2,52 +2,63 @@ import java.util.*;
 
 public class Trick {
 
-    private static final Suit S = null;
-    private final int MAX_TRICK = 13;
-    private int trickNo = 0;
-    private List<Card> playedTrickCards= new ArrayList<>(); 
+    
+    private List<CollectedCards> trickPile= new ArrayList<>(); 
     private Suit leadingSuit;
     private Card card;
-    private Dealer dealer;
+
 
     
-    public Trick(){
+/*     public Trick(){
 
     }
 public void playTrick(Player player, Card card){
     // Defined the leading suit
-    if (playedTrickCards.size()==0){
+    if (trickPile.size()==0){
         leadingSuit=card.getSuits();
         
         }
     // check if it is a valid suit and added to the tick
-     if(isValidSuit(player, leadingSuit)) {
-        playedTrickCards.add(card);
+     if(isValidSuit(trickPile, card)) {
+     //   trickPile.add(card);
 
        }
        else
        System.out.println("Please follow the suit!");
-}
 
-public boolean isValidSuit(Player player, Suit leadingSuit){
-    if (playedTrickCards.size()==0) {
-            // The first card played is always valid 
-            // ? check heart is broken
-            return true;
+} */
+
+Player players=new Player();
+boolean validSuit= true;
+public boolean isValidSuit(List<CollectedCards> trickPile, Card card){
+    if (trickPile.size()==0) {
+        if(card.getSuits()== Suit.HEART){
+           if(isHeartBroken())
+          System.out.println("Heart is not broken, use another card!");
+           validSuit=false;
+        }
+           else {
+           validSuit=true;
+           }
+           
         } 
-        else if (dealer.hasSuit(leadingSuit)){
-                return card.getSuits() == leadingSuit;
+        else if (players.hasSuit(card.getSuits())){
+                validSuit = false;
             } 
             else {
                 // If the player doesn't have cards of the leading suit, any card is valid
-                return true;
+                validSuit =true;
             }
-        
+        return validSuit;
     }
     public boolean isHeartBroken(){
-        return true;
-
-    }
+        for(CollectedCards suit: trickPile){
+            if(suit.getCard().getSuits()==Suit.HEART){
+                return true;
+            }
+             }
+             return false;
+            }
 
 
     // ... (other methods)
@@ -91,12 +102,4 @@ public boolean isValidSuit(Player player, Suit leadingSuit){
 //        return trickEnded;
 //    }
 
-
-    public int getMAX_TRICK() {
-        return MAX_TRICK;
-    }
-
-    public int getTrickNo() {
-        return trickNo;
-    }
 }
