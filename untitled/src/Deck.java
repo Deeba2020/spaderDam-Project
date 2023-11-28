@@ -39,7 +39,7 @@ public class Deck  {
 
     public void displayDeck() {
         for (Card card : cards) {
-            System.out.println(card.getSuitValue()+" of "+card.getSuits().getUnicode());
+            System.out.println(card.getSuitValue().getUnicode()+" of "+card.getSuits().getUnicode());
         }
     }
 

@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Trick {
 
@@ -7,22 +9,48 @@ public class Trick {
     //following should be implemented inorder to make the basic game the place/class of methods needs to be decided
     //countPenaltyScore() which is penalty score per user per trick(1st trick, 2n trick.......)
     //totalPenaltyScore() which is final penalty score per user after 13 tricks
-    //winner() after 13 tricks
+    //winner() per round after 13 tricks
+    //winner() final winner when one of players reaches 100 points and also game should end
     //suit() which suit to choose to play with need to be implemented for AI and active
     //winPileCard() method for the players to win the pile card
     //condition in the main to allow user to only use alphabet for the name
+    //GameEnd() when total score of one of user reaches 100 points
 
     private final int MAX_TRICK = 13;
-    private int trickNo = 0;
+    private int trickNo = 1;
     private ArrayList<Player>players;
 
     private final Card START_CARD;
     private final char SMILEY_FACE = '\u263A';
+   // Queue<Card> pileCards;
+    Dealer dealer;
 
-    public Trick (ArrayList<Player>players){
+    public Trick (Dealer dealer){
         START_CARD =new Card(Suit.CLUB,SuitValue.TWO);
-        this.players=players;
+        //this.players=players;
+      //  pileCards = new LinkedList<>();
+        this.dealer=dealer;
+
     }
+
+
+////showing all list of trick pile
+//        public Queue<Card> trickPileHand() {
+//        System.out.println("Trick pile has following cards: ");
+//        for (Card currentCard : pileCards) {
+//            System.out.println(currentCard.getSuitValue().getUnicode() + " of " + currentCard.getSuits().getUnicode());
+//        }
+//        return pileCards;
+//    }
+
+
+//to show top card on the trick pile
+//    public void topTrickPile(){
+//        System.out.println(pileCards.peek());
+//       // return pileCards.peek();
+//
+//
+//    }
 
     public int getMAX_TRICK() {
         return MAX_TRICK;
@@ -46,6 +74,7 @@ public class Trick {
 
 
 
+    public void nextPlayer() {}
 
 //    public boolean isTrickEnded (Player player) {
 //        boolean trickEnded;

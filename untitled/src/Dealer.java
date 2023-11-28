@@ -1,17 +1,20 @@
 import java.util.ArrayList;
 
 public class Dealer {
+    private final char SMILEY_FACE = '\u263A';
 
     private ArrayList<Card> cards;
      private ArrayList<Player> players;
     private final Deck DECK;
     private static final int MAX_DEAL = 13;  //no of cards each player should get
+    private final Card START_CARD;
 
 
     public Dealer() {
         DECK = new Deck(Suit.HEART, SuitValue.TWO);
         cards = DECK.createDeck();
         players = new ArrayList<>();
+        START_CARD =new Card(Suit.CLUB,SuitValue.TWO);
     }
 
 
@@ -42,6 +45,33 @@ public class Dealer {
     public ArrayList<Player> getPlayers() {
         return players;
     }
+
+
+    //this must be here since we need to go through player's hand and find 2 of club to start the game
+//    public void findStartCard(){
+//        for (Player player: players){
+//           if (player.getCards().contains(START_CARD)){
+//               System.out.println(player.getName()+" has "+START_CARD.getSuitValue().getUnicode()+" of "+START_CARD.getSuits().getUnicode() +SMILEY_FACE);
+//               player.addCardToPile(START_CARD);
+//               player.getCards().remove(START_CARD);
+//               player.displayHand();
+//           }
+//        }
+//    }
+
+//    public void nextPlayer(){
+//        for(Player player:players){
+//            if(players.get(0).getCards().contains(START_CARD)){
+//                players.get(3).addStartCardPile();
+//            } else if (players.get(1).getCards().contains(START_CARD)) {
+//                players.get(0).addStartCardPile();
+//            }else if (players.get(2).getCards().contains(START_CARD)) {
+//                players.get(1).addStartCardPile();
+//            }else if (players.get(3).getCards().contains(START_CARD)) {
+//                players.get(2).addStartCardPile();
+//            }
+//        }
+//    }
 
 
 

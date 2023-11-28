@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -12,10 +11,11 @@ public class Main {
 
 //        System.out.println("round one");
 
+
         Player a = new ActivePlayer(userName);
-        Player b = new AIOne();
-        Player c = new AITwo();
-        Player d = new AIThree();
+        Player b = new AIPlayer("AIOne");
+        Player c = new AIPlayer("AITwo");
+        Player d = new AIPlayer("AIThree");
 
         Dealer dealer = new Dealer();
 
@@ -29,8 +29,29 @@ public class Main {
         c.displayHand();
         d.displayHand();
 
-        FirstTrick firstTrick = new FirstTrick(dealer.getPlayers());
-        firstTrick.nextPlayer();
+        //dealer.findStartCard();
+        FirstTrick firstTrick = new FirstTrick(dealer);
+        //firstTrick.hasStartCArd();
+        firstTrick.startFirstTrick();
+        //firstTrick.nextPlayer();
+//       a.topTrickPile();
+//       b.topTrickPile();
+//       b.trickPileHand();
+//       a.displayHand();
+//       b.displayHand();
+//       c.displayHand();
+//       d.displayHand();
+
+
+
+
+//        Trick trick = new Trick();
+//
+//        trick.topTrickPile();
+
+
+//        Trick firstTrick = new FirstTrick(dealer.getPlayers());
+//        firstTrick.nextPlayer();
 
 
 
