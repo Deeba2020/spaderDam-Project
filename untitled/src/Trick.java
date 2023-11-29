@@ -1,105 +1,63 @@
-import java.util.*;
+import java.util.ArrayList;
 
 public class Trick {
 
+  public ArrayList<CollectedCards> trickPileCards = new ArrayList<>();
+  public String name;
+  public String trickWinnersName;
+  public Card cards;
+
+  public void addToPile(String name, Card card) {
+    trickPileCards.add(new CollectedCards(name, card));
     
-    private List<CollectedCards> trickPile= new ArrayList<>(); 
-    private Suit leadingSuit;
-    private Card card;
+  }
 
+  public String whoWonTrick() {
+    int rankValueTrick = -1;
+    Card leadingCard = new Card(Suit.CLUB, SuitValue.TWO);
+    Card winnerCard = new Card(Suit.CLUB, SuitValue.TWO);
 
-    
-/*     public Trick(){
+    for (CollectedCards trick : trickPileCards) {
+      if (trick.getCard().getSuits() == leadingCard.getSuits()) {
+        if (trick.getCard().getSuitValue().getRankValue() > rankValueTrick) {
+          rankValueTrick = trick.getCard().getSuitValue().getRankValue();
+          winnerCard = trick.getCard();
 
-    }
-public void playTrick(Player player, Card card){
-    // Defined the leading suit
-    if (trickPile.size()==0){
-        leadingSuit=card.getSuits();
-        
+          trickWinnersName = trick.getName();
         }
-    // check if it is a valid suit and added to the tick
-     if(isValidSuit(trickPile, card)) {
-     //   trickPile.add(card);
-
-       }
-       else
-       System.out.println("Please follow the suit!");
-
-} */
-
-Player players=new Player();
-boolean validSuit= true;
-public boolean isValidSuit(List<CollectedCards> trickPile, Card card){
-    if (trickPile.size()==0) {
-        if(card.getSuits()== Suit.HEART){
-           if(isHeartBroken())
-          System.out.println("Heart is not broken, use another card!");
-           validSuit=false;
-        }
-           else {
-           validSuit=true;
-           }
-           
-        } 
-        else if (players.hasSuit(card.getSuits())){
-                validSuit = false;
-            } 
-            else {
-                // If the player doesn't have cards of the leading suit, any card is valid
-                validSuit =true;
-            }
-        return validSuit;
+      }
     }
-    public boolean isHeartBroken(){
-        for(CollectedCards suit: trickPile){
-            if(suit.getCard().getSuits()==Suit.HEART){
-                return true;
-            }
-             }
-             return false;
-            }
+    System.out.println(
+      "Winner of the trick is " +
+      trickWinnersName +
+      " " +
+      winnerCard.getSuits() +
+      " of " +
+      winnerCard.getSuitValue()
+    );
 
+    return trickWinnersName;
+  }
 
-    // ... (other methods)
+  public void emptyPileTrick() {
+    for (int i = 0; i < trickPileCards.size(); i++) {
+      trickPileCards.remove(i);
+    }
+  }
 
+  public void updateScore(Player player) {
+    for (CollectedCards trickCard : trickPileCards) {
+      if (trickCard.getCard().getSuits() == Suit.HEART) {
+        player.setScore(1);
+      }
+      if (
+        trickCard.getCard().getSuits() == Suit.SPADE &&
+        trickCard.getCard().getSuitValue() == SuitValue.QUEEN
+      ) {
+        player.setScore(13);
+      }
+    }
 
-
-
-
-
-
-
-
-
-
-//    public boolean isTrickEnded (Player player) {
-//        boolean trickEnded;
-//
-//        if (trick.getTrickNo() == trick.getMAX_TRICK()) {
-//            for ()
-//
-//        }
-//    }
-
-
-//    public boolean isTrickEnded (Player player){
-//        boolean trickEnded ;
-//
-//        if (trickNo == MAX_TRICK){
-//
-//
-//
-//        }
-//        if (player.getScore()==MAX_SCORE || player.getScore()>MAX_SCORE){
-//            System.out.println("game ended and"+ player+"is the looser");
-//            roundEnded = true;
-//        }
-//        else {
-//            roundEnded = false;
-//        }
-//
-//        return trickEnded;
-//    }
-
+    trickPileCards.clear();
+  }
 }

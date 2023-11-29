@@ -33,8 +33,6 @@ public class Deck  {
     }
 
 
-
-    //update this one to be the one from Samra
     public ArrayList<Card> createDeck(){
          cards.clear();
          for(Suit suit: Suit.values()){
@@ -42,11 +40,7 @@ public class Deck  {
                 cards.add(new Card(suit, rank));
             }
          }
-        // for (int i = 0; i < Suit.values().length; i++){
-        //     for(int j = 0; j < SuitValue.values().length; j++){
-        //         cards.add(new Card(Suit.values()[i], SuitValue.values()[j]));
-        //     }
-        // }
+      
         return cards;
     }
 
@@ -59,8 +53,7 @@ public class Deck  {
     }
 
     public void shuffleDeck() {
-        System.out.println("list of shuffled cards are");
         Collections.shuffle(cards);
-        displayDeck();
+    
     }
 }

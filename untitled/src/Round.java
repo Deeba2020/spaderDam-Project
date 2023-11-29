@@ -5,9 +5,9 @@ public class Round {
     private final int MAX_SCORE = 100;
     private int firstRound = 1;
     private ArrayList<Player> players;
-    private ArrayList<Trick> tricks;
+    private ArrayList<FollowSuit> tricks;
 
-    public Round(int roundNum, Player player, Trick tricks) {
+    public Round(int roundNum, Player player, FollowSuit tricks) {
         this.roundNum = roundNum;
         this.players = null;
         this.tricks = null;

@@ -31,7 +31,7 @@ public class Card{
     }
     public void printCard(){
         
-System.out.println(this.suitValue.getRankValue() + " OF " +  this.suits.name() );
+System.out.println(this.suitValue.getSuitChar() + " OF " +  this.suits.name() );
     }
     //overriding equals method of objects
     public boolean equals(Object otherObj) {
