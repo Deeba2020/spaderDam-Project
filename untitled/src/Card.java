@@ -7,6 +7,7 @@ public class Card{
     private SuitValue suitValue;
 
 
+
     public Card(Suit suit, SuitValue suitValue){
        suits= suit;
        this.suitValue=suitValue;
@@ -20,6 +21,13 @@ public class Card{
     public SuitValue getSuitValue() {
         return suitValue;
     }
+
+
+    public int getRank(){return suitValue.getRankNo();}
+
+
+
+
 
 
 

@@ -1,9 +1,10 @@
 import java.security.PrivateKey;
 
-public class CardShared  {
+public class CardShared   {
 
     private Player player;
     private Card card;
+    private SuitValue suitValue;
 
     public CardShared(Player player,Card card){
         this.card=card;
@@ -31,8 +32,11 @@ public class CardShared  {
        this.card=card;
     }
 
+    public SuitValue getSuitValue() {
+        return suitValue;
+    }
 
-//    public boolean equals(Object otherObj) {
+    //    public boolean equals(Object otherObj) {
 //        boolean isEqual = false;
 //        if (otherObj == this){
 //            isEqual= true;

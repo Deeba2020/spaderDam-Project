@@ -33,6 +33,12 @@ public class Trick {
 
     }
 
+    public boolean isHeartBroken(){
+
+
+        return true;
+    }
+
 
 ////showing all list of trick pile
 //        public Queue<Card> trickPileHand() {
