@@ -33,6 +33,17 @@ public class Main {
         FirstTrick firstTrick = new FirstTrick(dealer);
         //firstTrick.hasStartCArd();
         firstTrick.startFirstTrick();
+
+        dealer.displayCardPlayerMapHand();
+
+        dealer.displayCardPlayerMap();
+        dealer.winner();
+        System.out.println(a.extractPileSuit());
+
+        //dealer.highestRankPlayer();
+
+        //a.cardPlayer();
+       // a.checkCardShared();
         //firstTrick.nextPlayer();
 //       a.topTrickPile();
 //       b.topTrickPile();

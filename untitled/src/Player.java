@@ -10,11 +10,13 @@ public class Player {
     private Random sameSuit;
 
     private Random randomSuit;
+    String n;
 
     //to track card shared by player to trick pile
-     ArrayList<CardShared> cardToPilepi;
+     ArrayList<CardShared> cardToPile;
      ArrayList<Card> cardWon ;
     ArrayList<Card> cardList ;
+    Map<String,String> cardPlayer;
     //private Trick trick;
 
 
@@ -25,10 +27,11 @@ public class Player {
         pileCards = new LinkedList<>();
         sameSuit = new Random();
         randomSuit = new Random();
-        cardToPilepi= new ArrayList<>();
+        cardToPile = new ArrayList<>();
         //trick = new Trick();
         cardWon = new ArrayList<>();
         cardList = new ArrayList<>();
+        cardPlayer=new HashMap<>();
     }
 
     public String getName() {
@@ -60,12 +63,15 @@ public class Player {
 
 
     public void addCardToPile(Card card) {
+         //n = name+card.getSuitValue().getUnicode();
+         cardPlayer.put(name,card.getSuitValue().getUnicode()+" of "+card.getSuits().getUnicode()+" with rank number "+card.getSuitValue().getRankNo());
+       // System.out.println(n);
         pileCards.add(card);
-        CardShared cardShared = new CardShared(this, card);
-        cardToPilepi.add(cardShared);
-        System.out.println(card.getSuitValue().getUnicode() + " of " + card.getSuits().getUnicode() + " added to the trick pile");
+//        CardShared cardShared = new CardShared(this, card);
+//        cardToPile.add(cardShared);
+        System.out.println(card.getSuitValue().getUnicode() + " of " + card.getSuits().getUnicode() + " added to the trick pile by "+name);
         trickPileHand();
-        topTrickPile();
+        //topTrickPile();
     }
 
 
@@ -82,12 +88,21 @@ public class Player {
     }
 
 
-    public ArrayList<CardShared> getCardToPile() {
-        return cardToPilepi;
+//to get suit of the pile card
+    public String extractPileSuit() {
+
+        String suit = pileCards.peek().getSuits().getUnicode();
+        return suit;
     }
 
 
-    //to find matching and unmatching suit in players hand to the trickPile
+
+    public ArrayList<CardShared> getCardToPile() {
+        return cardToPile;
+    }
+
+
+    //to find matching and  non-matching suit in players hand and add it  to the trickPile
     public void findSuit() {
         // ArrayList<Card>card= getCards();
 
@@ -114,35 +129,54 @@ public class Player {
             suitIndex = randomSuit.nextInt(differentSuit.size());
             chosenCard = differentSuit.get(suitIndex);
             addCardToPile(chosenCard);
+            cards.remove(chosenCard);
         }
        // determineHighestSuit(cardList);
     }
 
-    public void winCards() {
-        if (cardToPilepi.size() >= 4) {
-            Card highestCard = cardToPilepi.get(0).getCard();
-
-            for (int i = 1; i < 4; i++) {
-                Card currentCard = cardToPilepi.get(i).getCard();
-
-                // Compare the current card's suit value to the highest card's suit value
-                if (currentCard.getSuitValue().compareTo(highestCard.getSuitValue()) > 0) {
-                    highestCard = currentCard;
-                }
-            }
-
-            // Display the player who played the highest card
-            for (CardShared cardShared : cardToPilepi) {
-                if (cardShared.getCard().equals(highestCard)) {
-                    System.out.println(cardShared.getPlayer().getName() + " wins the trick with " +
-                            highestCard.getSuitValue().getUnicode() + " of " + highestCard.getSuits().getUnicode());
-                    // Add logic to handle winning the trick for this player
-                }
-            }
-        } else {
-            System.out.println("Not enough cards in the pile to determine the highest.");
-        }
+    public void cardPlayer(){
+       // cardPlayer.get(name);
+        System.out.println(cardPlayer.get(name));
+        System.out.println(cardPlayer.values());
     }
+
+    public Map<String, String> getCardPlayer() {
+        return cardPlayer;
+    }
+
+
+
+    //    public void checkCardShared(){
+//        for(Card card: pileCards){
+//            System.out.println(  "name of the card matched to the owner is " +name+card.getSuitValue().getUnicode());
+//        }
+//    }
+
+//    public void winCards() {
+//        if (cardToPile.size() >= 4) {
+//            Card highestCard = cardToPile.get(0).getCard();
+//
+//            for (int i = 1; i < 4; i++) {
+//                Card currentCard = cardToPile.get(i).getCard();
+//
+//                // Compare the current card's suit value to the highest card's suit value
+//                if (currentCard.getSuitValue().compareTo(highestCard.getSuitValue()) > 0) {
+//                    highestCard = currentCard;
+//                }
+//            }
+//
+//            // Display the player who played the highest card
+//            for (CardShared cardShared : cardToPile) {
+//                if (cardShared.getCard().equals(highestCard)) {
+//                    System.out.println(cardShared.getPlayer().getName() + " wins the trick with " +
+//                            highestCard.getSuitValue().getUnicode() + " of " + highestCard.getSuits().getUnicode());
+//                    // Add logic to handle winning the trick for this player
+//                }
+//            }
+//        } else {
+//            System.out.println("Not enough cards in the pile to determine the highest.");
+//        }
+//    }
 
 
     public void add(Queue<Card>pileCards){
@@ -150,36 +184,36 @@ public class Player {
         cardList.addAll(pileCards);
     }
 
-    public int determineHighestSuit(ArrayList<Card>cardList) {
-          add(pileCards);
-
-            if (cardList.size() >= 4) {
-                int highestSuitValue = cardList.get(0).getSuitValue().getRankNo();
-                System.out.println("highest suit value is" + highestSuitValue+getName());
-
-                for (int i = 1; i < cardList.size(); i++) {
-                    int currentSuitValue = cardList.get(i).getSuitValue().getRankNo();
-
-                    // Print statements for debugging
-                    System.out.println("Comparing: " + highestSuitValue + " with " + currentSuitValue);
-
-                    // Compare the current card's suit value to the highest card's suit value
-                    if (currentSuitValue > highestSuitValue) {
-                        highestSuitValue = currentSuitValue;
-                        // Debugging print statement for tracking changes
-                        System.out.println("Updating highestSuitValue to: " + highestSuitValue+name);
-                    }
-                }
-
-                // Debugging print statement to display final highestSuitValue
-                System.out.println("Final highestSuitValue: " + highestSuitValue+name);
-                return highestSuitValue;
-            } else {
-                System.out.println("Not enough cards in the pile to determine the highest.");
-
-            }
-        return 0; // Return null or handle the case where there are not enough cards in the pile
-        }
+//    public int determineHighestSuit(ArrayList<Card>cardList) {
+//          add(pileCards);
+//
+//            if (cardList.size() >= 4) {
+//                int highestSuitValue = cardList.get(0).getSuitValue().getRankNo();
+//                System.out.println("highest suit value is" + highestSuitValue+getName());
+//
+//                for (int i = 1; i < cardList.size(); i++) {
+//                    int currentSuitValue = cardList.get(i).getSuitValue().getRankNo();
+//
+//                    // Print statements for debugging
+//                    System.out.println("Comparing: " + highestSuitValue + " with " + currentSuitValue);
+//
+//                    // Compare the current card's suit value to the highest card's suit value
+//                    if (currentSuitValue > highestSuitValue) {
+//                        highestSuitValue = currentSuitValue;
+//                        // Debugging print statement for tracking changes
+//                        System.out.println("Updating highestSuitValue to: " + highestSuitValue+name);
+//                    }
+//                }
+//
+//                // Debugging print statement to display final highestSuitValue
+//                System.out.println("Final highestSuitValue: " + highestSuitValue+name);
+//                return highestSuitValue;
+//            } else {
+//                System.out.println("Not enough cards in the pile to determine the highest.");
+//
+//            }
+//        return 0; // Return null or handle the case where there are not enough cards in the pile
+//        }
 
 
 
