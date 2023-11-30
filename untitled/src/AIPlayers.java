@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public class AIPlayers extends Player {
 
-    AIPlayers (){
-        super( );
+    AIPlayers (Trick trick){
+        super(trick );
         super.type ="AI";
+        
     }
 
 
@@ -37,6 +38,29 @@ public ArrayList<Card> getPlayerHand(){
     
     
     }
+
+    public void continuePlay() {
+
+        Card pickedCard=pickCard();
+        
+        System.out.println( "player " + name + " added " + pickedCard.getSuitValue() + " of " + pickedCard.getSuits());
+
+        if(trick.trickPileCards.size()==0 && pickedCard.getSuits()==Suit.HEART){
+            if (!trick.isHeartBroken()){
+              System.out.println("Heart is not broken, use another card!");
+            pickCard();
+            }
+            else {
+              trick.addToPile(name, pickedCard);
+              leadingCard=pickedCard;
+              System.out.println("The leading card is :" + leadingCard.getSuitValue() + " of " + leadingCard.getSuits());
+            }
+            
+      
+          }else trick.addToPile(name, pickedCard);
+       
+    
+            }
     
     
 }

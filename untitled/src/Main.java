@@ -5,43 +5,17 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
   public static void main(String[] args) throws InterruptedException {
-    //System.out.println("Enter your name using only alphabetic");
-    Main main = new Main();
+
+
     Scanner input = new Scanner(System.in);
 
-    //System.out.println("name of the active player is " + userName);
 
-    //        System.out.println("round one");
-
-    /*  ActivePlayer a = new ActivePlayer(userName);
-        AIThree b = new AIThree();
-        AITwo c = new AITwo();
-        AIOne d = new AIOne();
-
-        Dealer dealer = new Dealer();
-        dealer.addPlayer(a);
-        dealer.addPlayer(b);
-        dealer.addPlayer(c);
-        dealer.addPlayer(d);
-
-        dealer.dealCards(a,b,c,d);
-
-        a.displayHand();
-        b.displayHand();
-        c.displayHand();
-        d.displayHand();
-
-        a.startPlay(a);
-        b.startPlay(b);
-        c.startPlay(c);
-        d.startPlay(d); */
-    // Samra change
 
     Player[] players = new Player[4];
     Dealer dealer = new Dealer();
     Trick trick = new Trick();
-    FollowSuit followSuit = new FollowSuit();
 
+    int turn =0;
     System.out.println("Enter the number active players.");
     int aktivplayers = input.nextInt();
 
@@ -53,81 +27,69 @@ public class Main {
 
         String userName = input.nextLine();
 
-        players[i] = new Player();
+        players[i] = new Player(trick);
         players[i].setName(userName);
 
         
       } else {
-        players[i] = new AIPlayers();
+        players[i] = new AIPlayers(trick);
 
         players[i].setName("Data " + i);
-                System.out.println("Creating AI player "+ players[i].type+" " + players[i].name);
+               
 
       }
     }
-    for( int i=0; i< players.length; i++){
-        System.out.println("Player type "+ players[i].type);
-    }
-
+  
     dealer.dealCards(players);
 
 
+
+    // while(soreOfAnyPlayer !>100)
   
 
     for (int trickNumber = 0; trickNumber < 13; trickNumber++) {
-      for (int playerIndex = 0; playerIndex < players.length; playerIndex++) {
-        if(trickNumber==0 && trick.trickPileCards.size()==0){
-           Card pickeCard= players[playerIndex].startPlay();
-           trick.addToPile(players[playerIndex].getName(), pickeCard);
-            System.out.println(
-            "player  " +
-            players[playerIndex].getName() +
-            " started the game with  " +
-            pickeCard.getSuitValue() +
-            " of " +
-            pickeCard.getSuits()
-          );
+      
+     System.out.println("Trick " + (trickNumber+1));
+        while (trick.trickPileCards.size()<4) {
+             int playerIndex = turn % players.length;
+
+            
+            if( trickNumber==0 && trick.trickPileCards.size()==0){
+
+            players[playerIndex].startPlay();
+
+            }else {
+               players[playerIndex].continuePlay();
+
+            }
+            turn++;
+            
         }
-        else{
-        Card pickeCard = players[playerIndex].continuePlay();
-        if (followSuit.isValidSuit(trick.trickPileCards, pickeCard)) {
-          trick.addToPile(players[playerIndex].getName(), pickeCard);
-          System.out.println(
-            "player " +
-            players[playerIndex].getName() +
-            " added " +
-            pickeCard.getSuitValue() +
-            " of " +
-            pickeCard.getSuits()
-          );
-        } else {
-          pickeCard = players[playerIndex].continuePlay();
-          trick.addToPile(players[playerIndex].getName(), pickeCard);
-          System.out.println(
-            "player " +
-            players[playerIndex].getName() +
-            " addedededed " +
-            pickeCard.getSuitValue() +
-            " of " +
-            pickeCard.getSuits()
-          );
-        }
-      }
-    }
-      players[1].displayerPlayerHand();
+     
+    
+     
       String winnersName = trick.whoWonTrick();
+      
 
-      for (int player = 0; player < players.length; player++) {
-        if (winnersName == players[player].getName()) {
-          trick.updateScore(players[player]);
+    
+      for (int indexOfPlayer = 0; indexOfPlayer < players.length; indexOfPlayer++) {
+        if (winnersName == players[indexOfPlayer].getName()) {
+          trick.updateScore(players[indexOfPlayer]);
+           turn =indexOfPlayer;
 
           System.out.println(
-            players[player].getName() + " has scored " + players[player].getScore()
+            players[indexOfPlayer].getName() + " has scored " + players[indexOfPlayer].getScore()
           );
         }
       }
-
+ /*  for( int i=0; i< players.length; i++){
+       
+        players[i].displayerPlayerHand();
+    } */
+      trick.leadingSuit = null;
       TimeUnit.SECONDS.sleep(10);
     }
   }
 }
+
+   
