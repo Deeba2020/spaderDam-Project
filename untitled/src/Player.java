@@ -140,6 +140,8 @@ public class Player {
   public void startPlay() {
     Card START_CARD = new Card(Suit.CLUB, SuitValue.TWO);
 
+
+
     if (playerHand.contains(START_CARD)) {
       trick.addToPile(name, START_CARD);
       playerHand.remove(START_CARD);

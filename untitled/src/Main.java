@@ -5,6 +5,18 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
   public static void main(String[] args) throws InterruptedException {
+    GameController gameController = new GameController();
+
+    // Game Setup
+    gameController.initiateGame();
+
+    // Looping Game-logic
+    while (!gameController.checkForWinner()) {
+        gameController.playRound();
+    }
+
+    // Handle Winner and Ending
+
 
 
     Scanner input = new Scanner(System.in);
