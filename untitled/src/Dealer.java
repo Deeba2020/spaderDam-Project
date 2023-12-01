@@ -116,55 +116,112 @@ public class Dealer {
 
 
 //returns player name with the highest rank card in the pile
-public void winner() {
-    int maxRankNum = 0;
-    String maxPlayerName = "";
-    String maxRankDeck = "";
-    String maxSuitDeck = "";
-
-
-    for (Player player : players) {
-        Card m = player.topTrickPile();
-        String keyName = player.getName();
-        if (player.cardPlayer.containsKey(keyName)) {
-            String deckInfo = player.cardPlayer.get(keyName);
-            // Extract the rank from the card using another method
-            int cardRankInt = extractCardRank(deckInfo);
-            maxSuitDeck =extractCardSuit(deckInfo);
-
-            if (cardRankInt > maxRankNum && Objects.equals(maxSuitDeck, player.extractPileSuit())) {
-                maxRankNum = cardRankInt;
-                maxPlayerName = keyName;
-                maxRankDeck = deckInfo;
-                //System.out.println(maxPlayerName );
-                //System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
-
-            } else if (Objects.equals(maxSuitDeck, player.extractPileSuit())) {
-                maxRankNum = cardRankInt;
-                maxPlayerName = keyName;
-                maxRankDeck = deckInfo;
-               // System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
-
-               // System.out.println(maxPlayerName );
-
-            }
-        }
-        System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
-    }
-
+//public void winner() {
+//    int maxRankNum = 0;
+//    String maxPlayerName = "";
+//    String maxRankDeck = "";
+//    String maxSuitDeck = "";
+//
+//
+//    for (Player player : players) {
+//        Card m = player.topTrickPile();
+//        String keyName = player.getName();
+//        if (player.cardPlayer.containsKey(keyName)) {
+//            String deckInfo = player.cardPlayer.get(keyName);
+//            // Extract the rank from the card using another method
+//            int cardRankInt = extractCardRank(deckInfo);
+//            maxSuitDeck =extractCardSuit(deckInfo);
+//
+//            if (cardRankInt > maxRankNum && Objects.equals(maxSuitDeck, player.extractPileSuit())) {
+//                maxRankNum = cardRankInt;
+//                maxPlayerName = keyName;
+//                maxRankDeck = deckInfo;
+//                //System.out.println(maxPlayerName );
+//                //System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
+//
+//            } else if (Objects.equals(maxSuitDeck, player.extractPileSuit())) {
+//                maxRankNum = cardRankInt;
+//                maxPlayerName = keyName;
+//                maxRankDeck = deckInfo;
+//               // System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
+//
+//               // System.out.println(maxPlayerName );
+//
+//            }
+//        }
+//        System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
+//    }
+//
 //    if (!maxPlayerName.isEmpty()) {
 //        System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
 //    } else {
 //        System.out.println("No cards added to the trick pile yet!");
 //    }
-}
+//}
+
+    public void winner() {
+        int maxRankNum = 0;
+        String maxPlayerName = "";
+        String maxRankDeck = "";
+        String maxSuitDeck = "";
+
+        for (Player player : players) {
+            Card m = player.topTrickPile();
+            String keyName = player.getName();
+            if (player.cardPlayer.containsKey(keyName)) {
+                String deckInfo = player.cardPlayer.get(keyName);
+                // Extract the rank from the card using another method
+                int cardRankInt = extractCardRank(deckInfo);
+                maxSuitDeck =extractCardSuit(deckInfo);
+                System.out.println("max suit deck is!!!! "+maxSuitDeck);
+                System.out.println("max rank!!!!!"+cardRankInt);
+
+                String pileSuit = player.extractPileSuit();
+                System.out.println("pile suit isss!!!!"+pileSuit);
+
+
+                if (cardRankInt > maxRankNum && maxSuitDeck.equals(player.extractPileSuit())) {
+                    maxRankNum = cardRankInt;
+                    maxPlayerName = keyName;
+                    maxRankDeck = deckInfo;
+                    System.out.println("hiiiiiiiiii");
+                    //System.out.println(maxPlayerName );
+                    //System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
+
+                } else if (maxSuitDeck.equals(player.extractPileSuit())) {
+                    maxRankNum = cardRankInt;
+                    maxPlayerName = keyName;
+                    maxRankDeck = deckInfo;
+                    System.out.println("byeeeeeeeeeeeeeeeeee");
+                    // System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
+
+                    // System.out.println(maxPlayerName );
+
+                }
+            }
+
+           // System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
+        }
+        System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
+
+        if (!maxPlayerName.isEmpty()) {
+            System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
+        } else {
+            System.out.println("No cards added to the trick pile yet!");
+        }
+    }
+
+
+
+
+
 
 
 //to extract the suit of the deck
     public String extractCardSuit(String deckInfo) {
 
-        String[] deck = deckInfo.split(" of ");
-        String cardSuit = deck[1];
+        String[] deck = deckInfo.split(" ");
+        String cardSuit = deck[2];
         return cardSuit;
     }
 
