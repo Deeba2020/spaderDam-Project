@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.*;
 
 public class Deck  {
-      //Deck is collection of cards
+      
      ArrayList<Card> cards;
      Suit suit;
      SuitValue suitValue;
