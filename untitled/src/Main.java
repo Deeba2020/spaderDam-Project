@@ -36,9 +36,9 @@ public class Main {
 
         dealer.displayCardPlayerMapHand();
 
-        dealer.displayCardPlayerMap();
+        //dealer.displayCardPlayerMap();
         dealer.winner();
-        System.out.println(a.extractPileSuit());
+        //System.out.println(a.extractPileSuit());
 
         //dealer.highestRankPlayer();
 

@@ -173,18 +173,18 @@ public class Dealer {
                 // Extract the rank from the card using another method
                 int cardRankInt = extractCardRank(deckInfo);
                 maxSuitDeck =extractCardSuit(deckInfo);
-                System.out.println("max suit deck is!!!! "+maxSuitDeck);
-                System.out.println("max rank!!!!!"+cardRankInt);
+               // System.out.println("max suit deck is!!!! "+maxSuitDeck); to test max suit
+               // System.out.println("max rank!!!!!"+cardRankInt); to test max rank
 
                 String pileSuit = player.extractPileSuit();
-                System.out.println("pile suit isss!!!!"+pileSuit);
+                //System.out.println("pile suit isss!!!!"+pileSuit);
 
 
                 if (cardRankInt > maxRankNum && maxSuitDeck.equals(player.extractPileSuit())) {
                     maxRankNum = cardRankInt;
                     maxPlayerName = keyName;
                     maxRankDeck = deckInfo;
-                    System.out.println("hiiiiiiiiii");
+                    //System.out.println("hiiiiiiiiii");
                     //System.out.println(maxPlayerName );
                     //System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
 
@@ -192,7 +192,7 @@ public class Dealer {
                     maxRankNum = cardRankInt;
                     maxPlayerName = keyName;
                     maxRankDeck = deckInfo;
-                    System.out.println("byeeeeeeeeeeeeeeeeee");
+                   // System.out.println("byeeeeeeeeeeeeeeeeee");
                     // System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
 
                     // System.out.println(maxPlayerName );
@@ -204,11 +204,12 @@ public class Dealer {
         }
         System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
 
-        if (!maxPlayerName.isEmpty()) {
-            System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
-        } else {
-            System.out.println("No cards added to the trick pile yet!");
-        }
+//        if (!maxPlayerName.isEmpty()) {
+//            System.out.println(maxPlayerName + " has the highest-ranked card which follows the suit: " + maxRankDeck+" the suit is  "+maxSuitDeck);
+//        }
+//        else {
+//            System.out.println("No cards added to the trick pile yet!");
+//        }
     }
 
 

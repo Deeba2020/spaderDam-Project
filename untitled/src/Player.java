@@ -56,7 +56,7 @@ public class Player {
         System.out.println("Trick pile has following cards: ");
         for (Card currentCard : pileCards) {
             System.out.println(currentCard.getSuitValue().getUnicode() + " of " + currentCard.getSuits().getUnicode());
-            System.out.println(currentCard.getRank());
+            //System.out.println(currentCard.getRank());
         }
         return pileCards;
     }
