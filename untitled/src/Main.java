@@ -14,6 +14,7 @@ public class Main {
     Player[] players = new Player[4];
     Dealer dealer = new Dealer();
     Trick trick = new Trick();
+    
 
     int turn =0;
     System.out.println("Enter the number active players.");
@@ -44,10 +45,11 @@ public class Main {
 
 
 
-    // while(soreOfAnyPlayer !>100)
+    // while(scoreOfAnyPlayer !>100
   
 
     for (int trickNumber = 0; trickNumber < 13; trickNumber++) {
+    
       
      System.out.println("Trick " + (trickNumber+1));
         while (trick.trickPileCards.size()<4) {
@@ -82,10 +84,7 @@ public class Main {
           );
         }
       }
- /*  for( int i=0; i< players.length; i++){
-       
-        players[i].displayerPlayerHand();
-    } */
+
       trick.leadingSuit = null;
       TimeUnit.SECONDS.sleep(10);
     }

@@ -8,6 +8,9 @@ public class Trick {
   public Card cards;
   public boolean isHeartBroken=false;
   public Suit leadingSuit = null;
+  public Player player;
+
+
 
   public void addToPile(String name, Card card) {
     if(leadingSuit==null)
@@ -58,6 +61,8 @@ public class Trick {
          }
          return heartSuit;
         }
+       
+      
 
   public void updateScore(Player player) {
     for (CollectedCards trickCard : trickPileCards) {
@@ -74,5 +79,7 @@ public class Trick {
 
     trickPileCards.clear();
   }
-   
+
 }
+   
+
