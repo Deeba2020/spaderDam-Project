@@ -91,8 +91,7 @@ public class Player {
 //to get suit of the pile card of the first card
     public String extractPileSuit() {
 
-        String suit = pileCards.get(0).getSuits().getUnicode();
-        return suit;
+        return pileCards.get(0).getSuits().getUnicode();
     }
 
 

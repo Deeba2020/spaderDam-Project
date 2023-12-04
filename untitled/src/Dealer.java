@@ -1,7 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
 public class Dealer {
     private final char SMILEY_FACE = '\u263A';
@@ -65,23 +62,24 @@ public class Dealer {
 
 
 
-    public void winner() {
+    public void TrickWinner() {
         int maxRankNum = 0;
         String maxPlayerName = "";
         String maxRankDeck = "";
         String maxSuitDeck = "";
 
+
         for (Player player : players) {
             String keyName = player.getName();
             if (player.cardPlayer.containsKey(keyName)) {
                 String deckInfo = player.cardPlayer.get(keyName);
-
                 int cardRankInt = extractCardRank(deckInfo);
                 maxSuitDeck = extractCardSuit(deckInfo);
+
                 String pileSuit = player.extractPileSuit();
 
-                if (pileSuit.equals(maxSuitDeck)) { // Check if the card belongs to the leading suit
-                    if (cardRankInt > maxRankNum) { // Compare ranks if it's the leading suit
+                if (pileSuit.equals(maxSuitDeck)) {
+                    if (cardRankInt > maxRankNum) {
                         maxRankNum = cardRankInt;
                         maxPlayerName = keyName;
                         maxRankDeck = deckInfo;
