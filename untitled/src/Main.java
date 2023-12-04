@@ -29,40 +29,20 @@ public class Main {
         c.displayHand();
         d.displayHand();
 
-        //dealer.findStartCard();
+
         FirstTrick firstTrick = new FirstTrick(dealer);
-        //firstTrick.hasStartCArd();
+
         firstTrick.startFirstTrick();
 
         dealer.displayCardPlayerMapHand();
 
-        //dealer.displayCardPlayerMap();
+
         dealer.winner();
-        //System.out.println(a.extractPileSuit());
-
-        //dealer.highestRankPlayer();
-
-        //a.cardPlayer();
-       // a.checkCardShared();
-        //firstTrick.nextPlayer();
-//       a.topTrickPile();
-//       b.topTrickPile();
-//       b.trickPileHand();
-//       a.displayHand();
-//       b.displayHand();
-//       c.displayHand();
-//       d.displayHand();
 
 
 
 
-//        Trick trick = new Trick();
-//
-//        trick.topTrickPile();
 
-
-//        Trick firstTrick = new FirstTrick(dealer.getPlayers());
-//        firstTrick.nextPlayer();
 
 
 
