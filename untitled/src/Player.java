@@ -119,7 +119,6 @@ public class Player {
       currntHand +=
         card.getSuitValue().getSuitChar().toString() +
         " of " +
-        card.getSuits().getUnicode() +
 
         card.getSuits().getUnicode() +
         ",";
