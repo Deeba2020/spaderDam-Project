@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Trick {
 
-  public ArrayList<CollectedCards> trickPileCards = new ArrayList<>();
+  public static ArrayList<CollectedCards> trickPileCards = new ArrayList<>();
   public String name;
   public String trickWinnersName;
   public Card cards;
