@@ -37,7 +37,13 @@ public class Main {
         dealer.displayCardPlayerMapHand();
 
 
-        dealer.TrickWinner();
+       // dealer.trickWinner();
+
+
+        dealer.isWinner();
+        //dealer.returnWinner();
+
+        a.trickPileList();
 
 
 

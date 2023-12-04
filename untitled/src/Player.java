@@ -10,7 +10,11 @@ public class Player {
     private Random sameSuit;
 
     private Random randomSuit;
-    String n;
+
+    //to store winning cards in the pile of the won player
+    private ArrayList<Card> playerPile;
+
+
 
     //to track card shared by player to trick pile
      ArrayList<CardShared> cardToPile;
@@ -32,6 +36,7 @@ public class Player {
         cardWon = new ArrayList<>();
         cardList = new ArrayList<>();
         cardPlayer=new HashMap<>();
+        playerPile = new ArrayList<>();
     }
 
     public String getName() {
@@ -53,13 +58,16 @@ public class Player {
 
 
     //showing all list of trick pile
-    public ArrayList<Card> trickPileHand() {
-        System.out.println("Trick pile has following cards: ");
-        for (Card currentCard : pileCards) {
-            System.out.println(currentCard.getSuitValue().getUnicode() + " of " + currentCard.getSuits().getUnicode());
-            //System.out.println(currentCard.getRank());
+    public void trickPileList() {
+        if(!(pileCards.isEmpty())) {
+            System.out.println("Trick pile has following cards: ");
+            for (Card currentCard : pileCards) {
+                System.out.println(currentCard.getSuitValue().getUnicode() + " of " + currentCard.getSuits().getUnicode());
+                //System.out.println(currentCard.getRank());
+            }
+        }else {
+            System.out.println("trick pile is empty because all cards added to pile of the trick winner");
         }
-        return pileCards;
     }
 
 
@@ -69,7 +77,7 @@ public class Player {
         pileCards.add(card);
         System.out.println(card.getSuitValue().getUnicode() + " of " + card.getSuits().getUnicode()
                 + " added to the trick pile by "+name);
-        trickPileHand();
+        trickPileList();
 
     }
 
@@ -91,7 +99,11 @@ public class Player {
 //to get suit of the pile card of the first card
     public String extractPileSuit() {
 
-        return pileCards.get(0).getSuits().getUnicode();
+        if(!pileCards.isEmpty()){
+            return pileCards.get(0).getSuits().getUnicode();
+        }else {
+            return "no card found";
+        }
     }
 
 
@@ -131,6 +143,26 @@ public class Player {
             cards.remove(chosenCard);
         }
 
+    }
+
+    //to add cards to pile of player hand and also print them out
+    public void addCardPlayerPile(){
+        playerPile.addAll(pileCards);
+        pileCards.clear();
+        playerPileHand();
+    }
+
+    public static ArrayList<Card> getPileCards() {
+        return pileCards;
+    }
+
+    //to print player pile hand list of cards
+    public ArrayList<Card> playerPileHand() {
+        System.out.println("Trick winner "+name+" has following cards in the pile hand : ");
+        for (Card currentCard : playerPile) {
+            System.out.println(currentCard.getSuitValue().getUnicode()  + currentCard.getSuits().getUnicode());
+        }
+        return playerPile;
     }
 
 
