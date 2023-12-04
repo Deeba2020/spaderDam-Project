@@ -47,10 +47,11 @@ public class Trick {
  
 
   public void emptyPileTrick() {
-    for (int i = 0; i < trickPileCards.size(); i++) {
-      trickPileCards.remove(i);
+//    for (int i = 0; i < trickPileCards.size(); i++) {
+//      trickPileCards.remove(i);
+      trickPileCards.clear();
     }
-  }
+//  }
 
   boolean heartSuit=false;
   public boolean isHeartBroken(){

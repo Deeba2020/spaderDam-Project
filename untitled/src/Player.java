@@ -119,7 +119,12 @@ public class Player {
       currntHand +=
         card.getSuitValue().getSuitChar().toString() +
         " of " +
+<<<<<<< HEAD
         card.getSuits()+
+=======
+
+        card.getSuits().getUnicode() +
+>>>>>>> 799c2053d6e0f39e1069e5ef49dbe988c220ff1a
         ",";
     }
     System.out.println(currntHand + "]");
