@@ -98,9 +98,9 @@ public class Player {
       System.out.println(
         card.getName() +
         " got " +
-        card.getCard().getSuitValue() +
+        card.getCard().getSuitValue()+
         "  of " +
-        card.getCard().getSuits()
+        card.getCard().getSuits().getUnicode()
       );
     }
   }
@@ -119,6 +119,8 @@ public class Player {
       currntHand +=
         card.getSuitValue().getSuitChar().toString() +
         " of " +
+        card.getSuits().getUnicode() +
+
         card.getSuits().getUnicode() +
         ",";
     }

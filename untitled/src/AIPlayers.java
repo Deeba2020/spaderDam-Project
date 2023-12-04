@@ -31,7 +31,7 @@ public ArrayList<Card> getPlayerHand(){
     public Card pickCard(){
       int min=0;
       int max=playerHand.size()-1;
-       // int cardIndex=rand.nextInt(playerHand.size());
+     
         int cardIndex= (int)Math.floor(Math.random() * (max - min + 1) + min);
         
         Card myCard = playerHand.get(cardIndex);
