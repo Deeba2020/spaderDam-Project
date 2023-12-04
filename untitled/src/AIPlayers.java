@@ -5,9 +5,11 @@ import java.util.Scanner;
 
 public class AIPlayers extends Player {
 
+    private String type = "Human";
+
     AIPlayers (Trick trick){
         super(trick );
-        super.type ="AI";
+        type ="AI";
         
     }
 
@@ -21,18 +23,18 @@ public class AIPlayers extends Player {
     Scanner input = new Scanner(System.in);
     
 
-public ArrayList<Card> getPlayerHand(){
-    return playerHand;
-
-}
+//public ArrayList<Card> getPlayerHand(){
+//    return getPlayerHand();
+//
+//}
 
 
     public Card pickCard(){
-        int cardIndex=rand.nextInt(playerHand.size());
+        int cardIndex=rand.nextInt(getPlayerHand().size());
         
-        Card myCard = playerHand.get(cardIndex);
+        Card myCard = getPlayerHand().get(cardIndex);
         myCard.printCard();
-       playerHand.remove(cardIndex);
+       getPlayerHand().remove(cardIndex);
         return myCard;
     
     
@@ -43,21 +45,21 @@ public ArrayList<Card> getPlayerHand(){
 
         Card pickedCard=pickCard();
         
-        System.out.println( "player " + name + " added " + pickedCard.getSuitValue() + " of " + pickedCard.getSuits());
+        System.out.println( "player " + getName() + " added " + pickedCard.getSuitValue() + " of " + pickedCard.getSuits());
 
-        if(trick.trickPileCards.size()==0 && pickedCard.getSuits()==Suit.HEART){
-            if (!trick.isHeartBroken()){
+        if(getTrick().trickPileCards.size()==0 && pickedCard.getSuits()==Suit.HEART){
+            if (!getTrick().isHeartBroken()){
               System.out.println("Heart is not broken, use another card!");
             pickCard();
             }
             else {
-              trick.addToPile(name, pickedCard);
+              getTrick().addToPile(getName(), pickedCard);
               leadingCard=pickedCard;
               System.out.println("The leading card is :" + leadingCard.getSuitValue() + " of " + leadingCard.getSuits());
             }
             
       
-          }else trick.addToPile(name, pickedCard);
+          }else getTrick().addToPile(getName(), pickedCard);
        
     
             }

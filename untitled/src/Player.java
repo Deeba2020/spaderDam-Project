@@ -8,16 +8,16 @@ import java.util.Scanner;
 
 public class Player {
 
-  public String name;
-  public String trickWinnersName;
-  public int score;
+  private String name;
+  private String trickWinnersName;
+  private int score;
 
   private ArrayList<Card> cards = new ArrayList<>();
   private ArrayList<CollectedCards> winnerCollection = new ArrayList<>();
-  public Card card;
-  public ArrayList<Card> playerHand = new ArrayList<>();
-  public String type = "Human";
-  public Trick trick;
+  private Card card;
+  private ArrayList<Card> playerHand = new ArrayList<>();
+  private String type = "Human";
+  private Trick trick;
 
   // private ArrayList<Integer> scores;
   public Player(Trick trick) {
@@ -37,6 +37,14 @@ public class Player {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public Trick getTrick() {
+    return trick;
+  }
+
+  public String getType() {
+    return type;
   }
 
   public void displayHand() {
@@ -185,6 +193,7 @@ public class Player {
               " of " +
               leadingCard.getSuits()
             );
+
           }
         } else {
           pickedCardValid = true;
@@ -197,6 +206,7 @@ public class Player {
             " of " +
             leadingCard.getSuits()
           );
+
         }
       } else if (trick.trickPileCards.size() != 0) {
 

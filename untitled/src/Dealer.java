@@ -31,8 +31,9 @@ public class Dealer {
                 if (!cards.isEmpty()) {
                     Card currentCard = cards.get(0);
                  
-                    player.playerHand.add(currentCard);
+                    player.getPlayerHand().add(currentCard);
                     cards.remove(0);
+
                 }
             }
         }

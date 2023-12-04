@@ -11,7 +11,6 @@ public class Card{
        suits= suit;
        this.suitValue=suitValue;
       // START_CARD= new Card(Suit.CLUB,SuitValue.TWO);
-
     }
 
     public Suit getSuits() {
