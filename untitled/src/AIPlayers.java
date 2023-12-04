@@ -35,7 +35,7 @@ public ArrayList<Card> getPlayerHand(){
         int cardIndex= (int)Math.floor(Math.random() * (max - min + 1) + min);
         
         Card myCard = playerHand.get(cardIndex);
-        myCard.printCard();
+        //myCard.printCard();
       
         return myCard;
     

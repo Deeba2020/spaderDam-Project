@@ -119,9 +119,7 @@ public class Player {
       currntHand +=
         card.getSuitValue().getSuitChar().toString() +
         " of " +
-        card.getSuits().getUnicode() +
-
-        card.getSuits().getUnicode() +
+        card.getSuits()+
         ",";
     }
     System.out.println(currntHand + "]");
@@ -141,7 +139,7 @@ public class Player {
   
  
   private Card START_CARD = new Card(Suit.CLUB, SuitValue.TWO);
-  public Card leadingCard = new Card(Suit.CLUB, SuitValue.TWO);
+  protected Card leadingCard = new Card(Suit.CLUB, SuitValue.TWO);
   public void startPlay() {
    
   
@@ -172,20 +170,21 @@ public class Player {
     Card pickedCard;
     while (!pickedCardValid) {
       pickedCard = pickCard();
-      if (trick.trickPileCards.size() == 0) {
+      if (trick.trickPileCards.size() == 0 && playerHand.contains(pickedCard)) {
              
 
-        if (pickedCard.getSuits() == Suit.HEART) {
+        if (pickedCard.getSuits() == Suit.HEART ) {
           if (!trick.isHeartBroken) {
             System.out.println("Heart is not broken, use another card!");
             
 
-          }else
+          }else if(playerHand.contains(pickedCard))
           {
             pickedCardValid = true;
             trick.addToPile(name, pickedCard);
             playerHand.remove(pickedCard);
             leadingCard = pickedCard;
+            
             System.out.println(
               "The leading card is :" +
               leadingCard.getSuitValue() +
@@ -193,7 +192,7 @@ public class Player {
               leadingCard.getSuits()
             );
           }
-        } else {
+        } else if(playerHand.contains(pickedCard)){
           pickedCardValid = true;
           trick.addToPile(name, pickedCard);
           playerHand.remove(pickedCard);
@@ -205,7 +204,7 @@ public class Player {
             leadingCard.getSuits()
           );
         }
-      } else if (trick.trickPileCards.size() != 0) {
+      } else if (trick.trickPileCards.size() != 0 && playerHand.contains(pickedCard)) {
 
         if (pickedCard.getSuits() == trick.leadingSuit) {
           trick.addToPile(name, pickedCard);
@@ -217,12 +216,13 @@ public class Player {
             " added " +
             pickedCard.getSuitValue() +
             " of " +
-            pickedCard.getSuits() + " hand size " + playerHand.size()
+            pickedCard.getSuits() + ", handsize: " + playerHand.size()
           );
         } else if (pickedCard.getSuits() != trick.leadingSuit) {
         if (hasSuit()) {
+          if(type.contains("Human")){
          System.out.println("You have the leading suit, which is " + trick.leadingSuit + ", use it!!" );
-        } else {
+        } }else {
           trick.addToPile(name, pickedCard);
           pickedCardValid = true;
 
@@ -230,10 +230,10 @@ public class Player {
           System.out.println(
             "player " +
             name +
-            " addedededed " +
+            " added " +
             pickedCard.getSuitValue() +
             " of " +
-            pickedCard.getSuits() + " hand size " +  playerHand.size()
+            pickedCard.getSuits() + ", handsize: " +  playerHand.size()
           );
         }
       }
