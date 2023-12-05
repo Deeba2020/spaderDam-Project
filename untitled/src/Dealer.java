@@ -8,9 +8,9 @@ public class Dealer {
     private final Deck DECK;
     private static final int MAX_DEAL = 13;  //no of cards each player should get
     private final Card START_CARD;
-    String maxPlayerName = "";
-    String maxRankDeck = "";
-    String maxSuitDeck = "";
+    String maxPlayerName ;
+    String maxRankDeck ;
+    String maxSuitDeck ;
     //Map<String,Card> cardPlayer;
 
 
@@ -19,6 +19,10 @@ public class Dealer {
         cards = DECK.createDeck();
         players = new ArrayList<>();
         START_CARD =new Card(Suit.CLUB,SuitValue.TWO);
+        maxPlayerName = "";
+        maxRankDeck = "";
+        maxSuitDeck = "";
+
 
     }
 
