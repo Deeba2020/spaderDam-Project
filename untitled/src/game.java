@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 
-public class Controller {
+public class game {
     
 
 public void playGame(){

@@ -1,7 +1,8 @@
 public class CollectedCards {
       private Card card;
-    private String name;
-    public CollectedCards(String name, Card card) {
+      private String name;
+      
+ public CollectedCards(String name, Card card) {
         this.name=name;
         this.card=card;
         

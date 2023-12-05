@@ -1,30 +1,22 @@
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Random;
+
 import java.util.Scanner;
 
 public class Player {
 
-  public String name;
-  public String trickWinnersName;
-  public int score;
-
-  private ArrayList<Card> cards = new ArrayList<>();
-  private ArrayList<CollectedCards> winnerCollection = new ArrayList<>();
-  public Card card;
+  protected String name;
+  protected int score;
+  protected ArrayList<Card> cards = new ArrayList<>();
+  
   protected ArrayList<Card> playerHand = new ArrayList<>();
   public String type = "Human";
   public Trick trick;
 
-  // private ArrayList<Integer> scores;
   public Player(Trick trick) {
     this.trick = trick;
   } 
 
-  Random rand = new Random();
+  
   Scanner input = new Scanner(System.in);
 
   public ArrayList<Card> getPlayerHand() {
@@ -86,24 +78,7 @@ public class Player {
     return myCard;
   }
 
-  public ArrayList<CollectedCards> winnerCollectTrick(CollectedCards trick) {
-    winnerCollection.add(new CollectedCards(trick.getName(), trick.getCard()));
-    return winnerCollection;
-    
-
-  }
-
-  public void desplayTrickWon() {
-    for (CollectedCards card : winnerCollection) {
-      System.out.println(
-        card.getName() +
-        " got " +
-        card.getCard().getSuitValue()+
-        "  of " +
-        card.getCard().getSuits().getUnicode()
-      );
-    }
-  }
+  
 
   public void setScore(int scoreValue) {
     score = score + scoreValue;
@@ -119,12 +94,8 @@ public class Player {
       currntHand +=
         card.getSuitValue().getSuitChar().toString() +
         " of " +
-<<<<<<< HEAD
-        card.getSuits()+
-=======
 
-        card.getSuits().getUnicode() +
->>>>>>> 799c2053d6e0f39e1069e5ef49dbe988c220ff1a
+        card.getSuits() +
         ",";
     }
     System.out.println(currntHand + "]");
@@ -145,6 +116,7 @@ public class Player {
  
   private Card START_CARD = new Card(Suit.CLUB, SuitValue.TWO);
   protected Card leadingCard = new Card(Suit.CLUB, SuitValue.TWO);
+
   public void startPlay() {
    
   

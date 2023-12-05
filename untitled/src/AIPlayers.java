@@ -11,15 +11,8 @@ public class AIPlayers extends Player {
         super.type ="AI";
         
     }
-
-
  
-
-   // private ArrayList<Integer> scores;
-    
-    
     Random rand = new Random();
-    Scanner input = new Scanner(System.in);
     
 
 public ArrayList<Card> getPlayerHand(){
@@ -35,36 +28,13 @@ public ArrayList<Card> getPlayerHand(){
         int cardIndex= (int)Math.floor(Math.random() * (max - min + 1) + min);
         
         Card myCard = playerHand.get(cardIndex);
-        //myCard.printCard();
-      
+        
         return myCard;
     
     
     
     }
 
-   /*  public void continuePlay() {
-
-        Card pickedCard=pickCard();
-        
-        System.out.println( "player " + name + " added " + pickedCard.getSuitValue() + " of " + pickedCard.getSuits());
-
-        if(trick.trickPileCards.size()==0 && pickedCard.getSuits()==Suit.HEART){
-            if (!trick.isHeartBroken()){
-              System.out.println("Heart is not broken, use another card!");
-            pickCard();
-            }
-            else {
-              trick.addToPile(name, pickedCard);
-              leadingCard=pickedCard;
-              System.out.println("The leading card is :" + leadingCard.getSuitValue() + " of " + leadingCard.getSuits());
-            }
-            
-      
-          }else trick.addToPile(name, pickedCard);
-       
-    
-            } */
-    
+   
     
 }

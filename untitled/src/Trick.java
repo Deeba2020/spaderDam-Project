@@ -9,6 +9,7 @@ public class Trick {
   public boolean isHeartBroken=false;
   public Suit leadingSuit = null;
   public Player player;
+  protected ArrayList<CollectedCards> winnerCollection = new ArrayList<>();
 
 
 
@@ -42,7 +43,26 @@ public class Trick {
 
     return trickWinnersName;
   }
+  public ArrayList<CollectedCards> winnerCollectTrick() {
+    for(CollectedCards trickPile: trickPileCards){
+    winnerCollection.add(new CollectedCards(trickPile.getName(), trickPile.getCard()));
+    }
+    return winnerCollection;
+    
 
+  }
+
+  public void desplayTrickWon() {
+    for (CollectedCards card : winnerCollection) {
+      System.out.println(
+        card.getName() +
+        " got " +
+        card.getCard().getSuitValue()+
+        "  of " +
+        card.getCard().getSuits().getUnicode()
+      );
+    }
+  }
  
  
 
@@ -74,10 +94,6 @@ public class Trick {
         player.setScore(13);
       }
     }
-
-    
-    
-
     trickPileCards.clear();
   }
 
