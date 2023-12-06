@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Player {
+public abstract class Player {
     private String name;
     private ArrayList<Card> cards;
 
@@ -48,6 +48,9 @@ public class Player {
     }
 
 
+
+
+
     public void displayHand() {
         System.out.println(name + " player has following cards: ");
         for (Card currentCard : cards) {
@@ -62,7 +65,8 @@ public class Player {
         if(!(pileCards.isEmpty())) {
             System.out.println("Trick pile has following cards: ");
             for (Card currentCard : pileCards) {
-                System.out.println(currentCard.getSuitValue().getUnicode() + " of " + currentCard.getSuits().getUnicode());
+                System.out.println(currentCard.getSuitValue().getUnicode() + " of " +
+                        currentCard.getSuits().getUnicode());
                 //System.out.println(currentCard.getRank());
             }
         }else {
@@ -86,7 +90,8 @@ public class Player {
     public Card topTrickPile() {
         if (!(pileCards.isEmpty())) {
             System.out.println("Card on the top of trick pile is "
-                    + pileCards.get(0).getSuitValue().getUnicode() + " of " + pileCards.get(0).getSuits().getUnicode());
+                    + pileCards.get(0).getSuitValue().getUnicode() + " of " +
+                    pileCards.get(0).getSuits().getUnicode());
             return pileCards.get(0);
         } else {
             System.out.println("trick pile has no card");
@@ -114,36 +119,7 @@ public class Player {
 
 
     //to find matching and  non-matching suit in players hand and add it  to the trickPile
-    public void findSuit() {
-        // ArrayList<Card>card= getCards();
-
-        Card topCard = topTrickPile();
-        ArrayList<Card> matchedSuits = new ArrayList<>();
-        ArrayList<Card> differentSuit = new ArrayList<>();
-        for (Card checkCard : cards) {
-            if (checkCard.getSuits().getUnicode().equals(topCard.getSuits().getUnicode())) {
-                matchedSuits.add(checkCard);
-
-            } else  {
-                differentSuit.add(checkCard);
-            }
-        }
-        int suitIndex;
-        Card chosenCard;
-        if (!(matchedSuits.isEmpty())) {
-            suitIndex = sameSuit.nextInt(matchedSuits.size());
-            chosenCard = matchedSuits.get(suitIndex);
-            addCardToPile(chosenCard);
-            cards.remove(chosenCard);
-        }
-        else if (!(differentSuit.isEmpty())) {
-            suitIndex = randomSuit.nextInt(differentSuit.size());
-            chosenCard = differentSuit.get(suitIndex);
-            addCardToPile(chosenCard);
-            cards.remove(chosenCard);
-        }
-
-    }
+    public abstract void findSuit() ;
 
     //to add cards to pile of player hand and also print them out
     public void addCardPlayerPile(){
@@ -186,8 +162,13 @@ public class Player {
         cardList.addAll(pileCards);
     }
 
+    public Random getSameSuit() {
+        return sameSuit;
+    }
 
-
+    public Random getRandomSuit() {
+        return randomSuit;
+    }
 }
 
 
