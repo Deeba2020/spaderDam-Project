@@ -29,18 +29,20 @@ public class FirstTrick extends Trick {
 //            }
 //        }
         if (playStarter != null) {
-            if (playStarter instanceof ActivePlayer) {
-                ActivePlayer humanPlayer = (ActivePlayer) playStarter;
-                // Call methods specific to HumanPlayer for user input
-                humanPlayer.findSuit();
-                // Other methods related to human player actions
-            } else if (playStarter instanceof AIPlayer) {
-                AIPlayer computerPlayer = (AIPlayer) playStarter;
-                // Call methods specific to ComputerPlayer for AI decision-making
-                computerPlayer.findSuit();
-                // Other methods related to computer player actions
-            }
+            for (Player player : dealer.getPlayers()) {
+                if (playStarter instanceof ActivePlayer) {
+                    ActivePlayer humanPlayer = (ActivePlayer) playStarter;
 
+                    humanPlayer.findSuit();
+
+                } else if (playStarter instanceof AIPlayer) {
+                    AIPlayer computerPlayer = (AIPlayer) playStarter;
+
+                    computerPlayer.findSuit();
+
+                }
+
+            }
         }
     }
 
