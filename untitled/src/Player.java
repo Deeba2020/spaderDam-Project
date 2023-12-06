@@ -14,6 +14,8 @@ public abstract class Player {
     //to store winning cards in the pile of the won player
     private ArrayList<Card> playerPile;
 
+    private boolean leadingPlayer;
+
 
 
     //to track card shared by player to trick pile
@@ -37,6 +39,7 @@ public abstract class Player {
         cardList = new ArrayList<>();
         cardPlayer=new HashMap<>();
         playerPile = new ArrayList<>();
+
     }
 
     public String getName() {
@@ -169,6 +172,15 @@ public abstract class Player {
     public Random getRandomSuit() {
         return randomSuit;
     }
+
+    public void setLeadingPlayer(boolean leadingPlayer) {
+        this.leadingPlayer = leadingPlayer;
+    }
+
+    public boolean isLeadingPlayer() {
+        return leadingPlayer;
+    }
+
 }
 
 

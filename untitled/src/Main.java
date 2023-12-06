@@ -32,7 +32,7 @@ public class Main {
 
         FirstTrick firstTrick = new FirstTrick(dealer);
 
-        firstTrick.startFirstTrick();
+        firstTrick.playFirstTrick();
 
         dealer.displayCardPlayerMapHand();
 

@@ -12,7 +12,6 @@ public class AIPlayer extends Player {
     //to find matching and  non-matching suit in players hand and add it  to the trickPile
     public void findSuit() {
         // ArrayList<Card>card= getCards();
-
         Card topCard = topTrickPile();
         ArrayList<Card> matchedSuits = new ArrayList<>();
         ArrayList<Card> differentSuit = new ArrayList<>();
