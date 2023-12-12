@@ -58,7 +58,10 @@ public class ActivePlayer extends Player {
 
         Card chosenCard = getCards().get(chosenIndex - 1);
         System.out.println("You chose: " + chosenCard.getSuitValue().getUnicode() + chosenCard.getSuits().getUnicode());
-        pileCards.add(chosenCard);
+        //pileCards.add(chosenCard);
+        addCardToPile(chosenCard);
+        getCards().remove(chosenCard);
+        playerHandNumbered();
 
     }
 
