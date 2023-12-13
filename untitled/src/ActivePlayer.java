@@ -1,5 +1,5 @@
+import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ActivePlayer extends Player {
@@ -25,33 +25,64 @@ public class ActivePlayer extends Player {
     }
 
 
-    public String rankSuit(int j) {
+    public String suitOfRank(int j) {
         Card card = getCards().get(j - 1);
         return card.getSuits().getUnicode();
     }
 
+    //
+//    public boolean kanUseHeart(){
+//        boolean kanUseHeart = true;
+//        if (kanFollowSuit()){
+//            kanUseHeart=false;
+//        }
+//        return kanUseHeart;
+//    }
 
+    //
+    public boolean kanUseHeart(){
+        boolean kanUseHeart = true;
+        if (matchedSuits.isEmpty()){
+            kanUseHeart=false;
+        }
+        return kanUseHeart;
+    }
+
+    //
+    public void useHeart() {
+            if (kanUseHeart()){
+                addChosenRankToPile();
+            }
+            else {
+                System.out.println("you can not use heart suit since heart are not broken yet");
+            }
+    }
+
+
+
+
+
+//
     public boolean kanFollowSuit() {
-        boolean leadingSuit = false;
+        boolean hasLeadingSuit = false;
         Card topCard = topTrickPileCard();
         for (Card checkCard : getCards()) {
             if (checkCard.getSuits().getUnicode().equals(topCard.getSuits().getUnicode())) {
                 matchedSuits.add(checkCard);
-                leadingSuit = true;
+                hasLeadingSuit = true;
             }
-
         }
-        return leadingSuit;
+        return hasLeadingSuit;
     }
 
-
+//
     public boolean followsSuit(int chosenIndex) {
         boolean followSuit = false;
         if (kanFollowSuit()) {
 
             for (Card cards : matchedSuits) {
 
-                if (cards.getSuits().getUnicode().equals(rankSuit(chosenIndex))) {
+                if (cards.getSuits().getUnicode().equals(suitOfRank(chosenIndex))) {
                     followSuit = true;
                 }
             }
@@ -60,7 +91,8 @@ public class ActivePlayer extends Player {
     }
 
 
-    public void addChosenCardToPile(){
+
+    public void addChosenRankToPile(){
         Card chosenCard = getCards().get(chosenIndex - 1);
         System.out.println("You chose: " + chosenCard.getSuitValue().getUnicode() + chosenCard.getSuits().getUnicode());
         addCardToPile(chosenCard);
@@ -70,12 +102,10 @@ public class ActivePlayer extends Player {
 
 
 
-
 //throw new InputMismatchException(); how to fit this exception to below method?
             public void findSuit () {
                 System.out.println("Your turn:");
                 playerHandNumbered();
-                //int chosenIndex;
                 do {
                     System.out.println("Enter the number of the card you want to play:");
                     chosenIndex = input.nextInt();
@@ -86,8 +116,6 @@ public class ActivePlayer extends Player {
 
                     if (!followsSuit(chosenIndex)) {
 
-                       // System.out.println("The leading suit of current trick is " + extractPileSuit() + " you have the leading suit you must play it ");
-
                         do {
                             System.out.println("The leading suit of current trick is " + extractPileSuit() + " you have the leading suit you must play it ");
                             chosenIndex = input.nextInt();
@@ -96,23 +124,16 @@ public class ActivePlayer extends Player {
                         while (chosenIndex < 1 || chosenIndex > getCards().size() || !followsSuit(chosenIndex));
 
                     }
-//                    Card chosenCard = getCards().get(chosenIndex - 1);
-//                    System.out.println("You chose: " + chosenCard.getSuitValue().getUnicode() + chosenCard.getSuits().getUnicode());
-//                    addCardToPile(chosenCard);
-//                    getCards().remove(chosenCard);
-//                    playerHandNumbered();
-                    addChosenCardToPile();
 
+                    addChosenRankToPile();
 
-                }else {
-                    addChosenCardToPile();
+                } else {
+                    if(suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())){
+                        useHeart();
+                    } else {
+                        addChosenRankToPile();
+                    }
                 }
-
-
-
-
-
-
 
             }
 
@@ -139,6 +160,17 @@ public class ActivePlayer extends Player {
 //
 //    }
 
+
+    //    public void useHeart() {
+//            if (suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())) {
+//                if (kanUseHeart()){
+//                    addChosenRankToPile();
+//                }
+//                else {
+//                    System.out.println("you can not use heart suit since heart are not broken yet");
+//                }
+//            }
+//    }
 
 
 

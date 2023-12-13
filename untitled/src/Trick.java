@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Trick {
+public abstract class Trick {
 
     ////heartBroken() should be implemented here
 
@@ -24,19 +24,24 @@ public class Trick {
     private final char SMILEY_FACE = '\u263A';
    // Queue<Card> pileCards;
     Dealer dealer;
+   // Player player;
+
+
 
     public Trick (Dealer dealer){
         START_CARD =new Card(Suit.CLUB,SuitValue.TWO);
-        //this.players=players;
+        players=this.getPlayers();
       //  pileCards = new LinkedList<>();
         this.dealer=dealer;
+       // player = dealer.getPlayers().get(0);
 
     }
 
-    public boolean isHeartBroken(){
+    public void isHeartBroken(){
+
+        System.out.println("check heart");
 
 
-        return true;
     }
 
 

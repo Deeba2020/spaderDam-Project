@@ -30,6 +30,7 @@ public class Main {
         d.displayHand();
 
 
+
         FirstTrick firstTrick = new FirstTrick(dealer);
 
         firstTrick.playFirstTrick();
@@ -44,6 +45,12 @@ public class Main {
         //dealer.returnWinner();
 
         a.trickPileList();
+
+
+        firstTrick.isHeartBroken();
+
+
+
 
 
 

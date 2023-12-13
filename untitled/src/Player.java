@@ -1,6 +1,6 @@
 import java.util.*;
 
-public abstract class Player {
+public  abstract class Player {
     private String name;
     private ArrayList<Card> cards;
 
@@ -131,7 +131,7 @@ public abstract class Player {
 
 
     //to find matching and  non-matching suit in players hand and add it  to the trickPile
-    public abstract void findSuit() ;
+    public abstract void findSuit();
 
     //to add cards to pile of player hand and also print them out
     public void addCardPlayerPile(){
@@ -139,6 +139,14 @@ public abstract class Player {
         pileCards.clear();
         playerPileHand();
     }
+
+    public ArrayList<Card> getPlayerPile() {
+        return playerPile;
+    }
+
+
+
+
 
     public static ArrayList<Card> getPileCards() {
         return pileCards;
