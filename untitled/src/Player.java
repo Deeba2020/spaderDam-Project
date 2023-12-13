@@ -103,6 +103,15 @@ public abstract class Player {
         }
     }
 
+    public Card topTrickPileCard() {
+        if (!(pileCards.isEmpty())) {
+            return pileCards.get(0);
+        } else {
+            System.out.println("trick pile has no card");
+            return null;
+        }
+    }
+
 
 //to get suit of the pile card of the first card
     public String extractPileSuit() {
