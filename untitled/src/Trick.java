@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public abstract class Trick {
+public  class Trick {
 
     ////heartBroken() should be implemented here
 
@@ -17,14 +17,22 @@ public abstract class Trick {
     //GameEnd() when total score of one of user reaches 100 points
 
     private final int MAX_TRICK = 13;
-    private int trickNo = 1;
+
     private ArrayList<Player>players;
 
     private final Card START_CARD;
     private final char SMILEY_FACE = '\u263A';
    // Queue<Card> pileCards;
-    Dealer dealer;
-   // Player player;
+    private Dealer dealer;
+    private static int trickNo=0;
+
+
+    String maxPlayerName ;
+    String maxRankDeck ;
+    String maxSuitDeck ;
+
+
+
 
 
 
@@ -34,14 +42,21 @@ public abstract class Trick {
       //  pileCards = new LinkedList<>();
         this.dealer=dealer;
        // player = dealer.getPlayers().get(0);
+        maxPlayerName = "";
+        maxRankDeck = "";
+        maxSuitDeck = "";
 
     }
 
     public void isHeartBroken(){
+        boolean isHeartBroken = Player.getIsIsHeartBroken();
+        System.out.println(isHeartBroken);
+    }
 
-        System.out.println("check heart");
 
-
+    public void updateTrick(){
+        trickNo++;
+        System.out.println("current trick no is: "+trickNo);
     }
 
 
@@ -83,9 +98,69 @@ public abstract class Trick {
         return players;
     }
 
-
+    public Dealer getDealer() {
+        return dealer;
+    }
 
     public void nextPlayer() {}
+
+    public int extractCardRank(String deckInfo) {
+
+        String[] deck = deckInfo.split(" ");
+        String cardRank = deck[deck.length-1];
+        return Integer.parseInt(cardRank);
+    }
+
+
+    public String extractCardSuit(String deckInfo) {
+
+        String[] deck = deckInfo.split(" ");
+        String cardSuit = deck[2];
+        return cardSuit;
+    }
+
+
+    public boolean isWinner(){
+        updateTrick();
+        boolean isWinner =false;
+        for(Player player:dealer.getPlayers()){
+            if(player.getName().equals(trickWinner())){
+                isWinner=true;
+                player.addCardPlayerPile();
+                break;
+            }
+        }
+        return isWinner;
+    }
+
+
+
+
+    public String trickWinner() {
+        int maxRankNum = 0;
+
+
+        for (Player player : dealer.getPlayers()) {
+            String keyName = player.getName();
+            if (player.cardPlayer.containsKey(keyName)) {
+                String deckInfo = player.cardPlayer.get(keyName);
+                int cardRankInt = extractCardRank(deckInfo);
+                maxSuitDeck = extractCardSuit(deckInfo);
+
+                String pileSuit = player.extractPileSuit();
+
+                if (pileSuit.equals(maxSuitDeck) && cardRankInt > maxRankNum) {
+                    maxRankNum = cardRankInt;
+                    maxPlayerName = keyName;
+                    maxRankDeck = deckInfo;
+
+                }
+            }
+        }
+
+        return maxPlayerName;
+
+    }
 
 //    public boolean isTrickEnded (Player player) {
 //        boolean trickEnded;

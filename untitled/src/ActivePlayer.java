@@ -49,13 +49,23 @@ public class ActivePlayer extends Player {
     }
 
     //
+//    public void useHeart() {
+//            if (kanUseHeart()){
+//                addChosenRankToPile();
+//                setIsHeartBroken(true);
+//            }
+//            else {
+//                System.out.println("you can not use heart suit since heart are not broken yet");
+//            }
+//    }
+
+
     public void useHeart() {
-            if (kanUseHeart()){
-                addChosenRankToPile();
-            }
-            else {
-                System.out.println("you can not use heart suit since heart are not broken yet");
-            }
+
+        addChosenRankToPile();
+        setIsHeartBroken(true);
+        System.out.println("you can not use heart suit since heart are not broken yet");
+
     }
 
 

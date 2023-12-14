@@ -5,7 +5,7 @@ public class FirstTrick extends Trick {
     private final Card START_CARD;
     static Player playStarter;
 
-    List<Player> players = dealer.getPlayers();
+    List<Player> players = getDealer().getPlayers();
 
     public FirstTrick(Dealer dealer) {
         super(dealer);
@@ -36,11 +36,11 @@ public class FirstTrick extends Trick {
 
 
         public void nextPlayer() {
-        for (int i = 0; i < dealer.getPlayers().size(); i++) {
-            Player p0 = dealer.getPlayers().get(0);
-            Player p1 = dealer.getPlayers().get(1);
-            Player p2 = dealer.getPlayers().get(2);
-            Player p3 = dealer.getPlayers().get(3);
+        for (int i = 0; i < getDealer().getPlayers().size(); i++) {
+            Player p0 = getDealer().getPlayers().get(0);
+            Player p1 = getDealer().getPlayers().get(1);
+            Player p2 = getDealer().getPlayers().get(2);
+            Player p3 = getDealer().getPlayers().get(3);
 
             if (p0.isLeadingPlayer()) {
                // System.out.println(p0.getName() + " has " + getSTART_CARD().getSuitValue().getUnicode() + " of " + getSTART_CARD().getSuits().getUnicode() + " and can start the game " + getSMILEY_FACE());

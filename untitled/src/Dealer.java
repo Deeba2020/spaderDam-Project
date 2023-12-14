@@ -14,6 +14,7 @@ public class Dealer {
     //Map<String,Card> cardPlayer;
 
 
+
     public Dealer() {
         DECK = new Deck(Suit.HEART, SuitValue.TWO);
         cards = DECK.createDeck();
@@ -22,6 +23,7 @@ public class Dealer {
         maxPlayerName = "";
         maxRankDeck = "";
         maxSuitDeck = "";
+
 
 
     }
@@ -59,12 +61,12 @@ public class Dealer {
 
 
     //  method to extract rank number of the card from the card in integer
-    public int extractCardRank(String deckInfo) {
-
-        String[] deck = deckInfo.split(" ");
-        String cardRank = deck[deck.length-1];
-        return Integer.parseInt(cardRank);
-    }
+//    public int extractCardRank(String deckInfo) {
+//
+//        String[] deck = deckInfo.split(" ");
+//        String cardRank = deck[deck.length-1];
+//        return Integer.parseInt(cardRank);
+//    }
 
 
 
@@ -106,29 +108,33 @@ public class Dealer {
 //    }
 
 
-    public String trickWinner() {
-        int maxRankNum = 0;
+//    public String trickWinner() {
+//        int maxRankNum = 0;
+//
+//        for (Player player : players) {
+//            String keyName = player.getName();
+//            if (player.cardPlayer.containsKey(keyName)) {
+//                String deckInfo = player.cardPlayer.get(keyName);
+//                int cardRankInt = extractCardRank(deckInfo);
+//                maxSuitDeck = extractCardSuit(deckInfo);
+//
+//                String pileSuit = player.extractPileSuit();
+//
+//                if (pileSuit.equals(maxSuitDeck) && cardRankInt > maxRankNum) {
+//                    maxRankNum = cardRankInt;
+//                    maxPlayerName = keyName;
+//                    maxRankDeck = deckInfo;
+//                    trick.updateTrick();
+//
+//                }
+//            }
+//        }
+//
+//        return maxPlayerName;
+//
+//
+//    }
 
-        for (Player player : players) {
-            String keyName = player.getName();
-            if (player.cardPlayer.containsKey(keyName)) {
-                String deckInfo = player.cardPlayer.get(keyName);
-                int cardRankInt = extractCardRank(deckInfo);
-                maxSuitDeck = extractCardSuit(deckInfo);
-
-                String pileSuit = player.extractPileSuit();
-
-                if (pileSuit.equals(maxSuitDeck) && cardRankInt > maxRankNum) {
-                    maxRankNum = cardRankInt;
-                    maxPlayerName = keyName;
-                    maxRankDeck = deckInfo;
-
-                }
-            }
-        }
-
-        return maxPlayerName;
-    }
 
 
     //maybe could be useful later on
@@ -144,29 +150,29 @@ public class Dealer {
 
 
     //to check if the player is winner
-    public boolean isWinner(){
-        boolean isWinner =false;
-        for(Player player:players){
-            if(player.getName().equals(trickWinner())){
-                isWinner=true;
-                player.addCardPlayerPile();
-                break;
-            }
-        }
-        return isWinner;
-    }
+//    public boolean isWinner(){
+//        boolean isWinner =false;
+//        for(Player player:players){
+//            if(player.getName().equals(trickWinner())){
+//                isWinner=true;
+//                player.addCardPlayerPile();
+//                break;
+//            }
+//        }
+//        return isWinner;
+//    }
 
 
 
 
 
 //to extract the suit of the deck
-    public String extractCardSuit(String deckInfo) {
-
-        String[] deck = deckInfo.split(" ");
-        String cardSuit = deck[2];
-        return cardSuit;
-    }
+//    public String extractCardSuit(String deckInfo) {
+//
+//        String[] deck = deckInfo.split(" ");
+//        String cardSuit = deck[2];
+//        return cardSuit;
+//    }
 
 
 

@@ -41,13 +41,14 @@ public class Main {
        // dealer.trickWinner();
 
 
-        dealer.isWinner();
+        firstTrick.isWinner();
         //dealer.returnWinner();
 
         a.trickPileList();
 
 
         firstTrick.isHeartBroken();
+
 
 
 

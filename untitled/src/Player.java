@@ -4,7 +4,7 @@ public  abstract class Player {
     private String name;
     private ArrayList<Card> cards;
 
-    //first in first out
+
     static ArrayList<Card> pileCards;
     private ArrayList<Integer> scores;
     private Random sameSuit;
@@ -23,7 +23,10 @@ public  abstract class Player {
      ArrayList<Card> cardWon ;
     ArrayList<Card> cardList ;
     Map<String,String> cardPlayer;
-    //private Trick trick;
+    private Trick trick;
+    private GameController controller;
+
+    private static boolean isHeartBroken = false;
 
 
     public Player(String name) {
@@ -34,11 +37,13 @@ public  abstract class Player {
         sameSuit = new Random();
         randomSuit = new Random();
         cardToPile = new ArrayList<>();
-        //trick = new Trick();
+        //trick = new Trick(new Dealer(d));
         cardWon = new ArrayList<>();
         cardList = new ArrayList<>();
         cardPlayer=new HashMap<>();
         playerPile = new ArrayList<>();
+
+
 
     }
 
@@ -82,9 +87,11 @@ public  abstract class Player {
          cardPlayer.put(name,card.getSuitValue().getUnicode()+" of "+card.getSuits().getUnicode()
                  +" with rank number "+card.getSuitValue().getRankNo());
         pileCards.add(card);
+
         System.out.println(card.getSuitValue().getUnicode() + " of " + card.getSuits().getUnicode()
                 + " added to the trick pile by "+name);
         trickPileList();
+
 
     }
 
@@ -103,6 +110,8 @@ public  abstract class Player {
         }
     }
 
+
+
     public Card topTrickPileCard() {
         if (!(pileCards.isEmpty())) {
             return pileCards.get(0);
@@ -111,6 +120,7 @@ public  abstract class Player {
             return null;
         }
     }
+
 
 
 //to get suit of the pile card of the first card
@@ -122,6 +132,7 @@ public  abstract class Player {
             return "no card found";
         }
     }
+
 
 
 
@@ -182,6 +193,7 @@ public  abstract class Player {
         cardList.addAll(pileCards);
     }
 
+
     public Random getSameSuit() {
         return sameSuit;
     }
@@ -198,7 +210,21 @@ public  abstract class Player {
         return leadingPlayer;
     }
 
+
+    public static boolean getIsIsHeartBroken() {
+        return isHeartBroken;
+    }
+
+    public static void setIsHeartBroken(boolean isHeartBroken) {
+        Player.isHeartBroken = isHeartBroken;
+    }
+
+
+
+
 }
+
+
 
 
 
