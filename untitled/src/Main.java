@@ -49,6 +49,17 @@ public class Main {
 
         firstTrick.isHeartBroken();
 
+        Trick trick = new Trick(dealer);
+        trick.trickWinner();
+
+        Trick nextTrick = new NextTrick(dealer);
+
+       // System.out.println("max player name issss"+Trick.getMaxPlayerName());
+
+        trick.playerName();
+
+
+
 
 
 

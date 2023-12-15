@@ -27,9 +27,10 @@ public  class Trick {
     private static int trickNo=0;
 
 
-    String maxPlayerName ;
+   private  String maxPlayerName;
     String maxRankDeck ;
     String maxSuitDeck ;
+    String keyName ="";
 
 
 
@@ -136,12 +137,14 @@ public  class Trick {
 
 
 
+
     public String trickWinner() {
         int maxRankNum = 0;
 
 
         for (Player player : dealer.getPlayers()) {
-            String keyName = player.getName();
+            //String keyName = player.getName();
+            keyName = player.getName();
             if (player.cardPlayer.containsKey(keyName)) {
                 String deckInfo = player.cardPlayer.get(keyName);
                 int cardRankInt = extractCardRank(deckInfo);
@@ -158,10 +161,27 @@ public  class Trick {
             }
         }
 
+
+
+        //setMaxPlayerName(keyName);
+
+
+        System.out.println("max player name is :"+maxPlayerName);
+
+
         return maxPlayerName;
 
     }
 
+    public  String getMaxPlayerName() {
+        return maxPlayerName;
+    }
+
+
+
+    public void playerName() {
+        System.out.println("hiiiiiii"+maxPlayerName);
+    }
 //    public boolean isTrickEnded (Player player) {
 //        boolean trickEnded;
 //
