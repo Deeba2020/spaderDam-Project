@@ -144,6 +144,8 @@ public  abstract class Player {
     //to find matching and  non-matching suit in players hand and add it  to the trickPile
     public abstract void findSuit();
 
+    public abstract void findStartCard();
+
     //to add cards to pile of player hand and also print them out
     public void addCardPlayerPile(){
         playerPile.addAll(pileCards);

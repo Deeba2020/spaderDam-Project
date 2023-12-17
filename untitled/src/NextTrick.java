@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class NextTrick extends Trick{
+
+    List<Player> players = getDealer().getPlayers();
 
     public NextTrick(Dealer dealer){
         super(dealer);
@@ -11,6 +14,32 @@ public class NextTrick extends Trick{
     //startGame()
     //nextPlayer()
     //nextCard()
+
+
+    public void findPreviousWinner() {
+        for (Player player : players) {
+            if (player.getName().equals(getMaxPlayerName())) player.setLeadingPlayer(true);
+        }
+    }
+
+    public Player findLeadingPlayer() {
+        for (Player player : players) {
+            if (player.isLeadingPlayer()) return player;
+        }
+        return null;
+    }
+
+
+
+
+    public void playNextTrick() {
+        findPreviousWinner();
+        Player leadingPlayer = findLeadingPlayer();
+
+        System.out.println(leadingPlayer.getName() + " is winner of previous trick and can start the game " );
+        leadingPlayer.findStartCard();
+        nextPlayer();
+    }
 
 
 

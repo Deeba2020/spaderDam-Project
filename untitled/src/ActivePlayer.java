@@ -147,6 +147,25 @@ public class ActivePlayer extends Player {
 
             }
 
+    public void findStartCard() {
+        //ArrayList<Card>card= getCards();
+        ArrayList<Card> differentSuit = new ArrayList<>();
+        for (Card checkCard : getCards()) {
+
+            differentSuit.add(checkCard);
+        }
+
+        int suitIndex;
+        Card chosenCard;
+
+        if (!(differentSuit.isEmpty())) {
+            suitIndex = getRandomSuit().nextInt(differentSuit.size());
+            chosenCard = differentSuit.get(suitIndex);
+            addCardToPile(chosenCard);
+            getCards().remove(chosenCard);
+        }
+
+    }
 
 
 

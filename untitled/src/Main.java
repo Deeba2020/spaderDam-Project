@@ -52,11 +52,21 @@ public class Main {
         Trick trick = new Trick(dealer);
         trick.trickWinner();
 
-        Trick nextTrick = new NextTrick(dealer);
+        NextTrick nextTrick = new NextTrick(dealer);
 
        // System.out.println("max player name issss"+Trick.getMaxPlayerName());
 
         trick.playerName();
+
+        nextTrick.playNextTrick();
+
+        nextTrick.nextPlayer();
+//        dealer.displayCardPlayerMapHand();
+//        nextTrick.isWinner();
+//        a.topTrickPileCard();
+//        nextTrick.isHeartBroken();
+//        trick.trickWinner();
+
 
 
 

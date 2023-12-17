@@ -27,10 +27,10 @@ public  class Trick {
     private static int trickNo=0;
 
 
-   private  String maxPlayerName;
-    String maxRankDeck ;
-    String maxSuitDeck ;
-    String keyName ="";
+   private static String maxPlayerName="";
+    String maxRankDeck="" ;
+    String maxSuitDeck ="";
+   // String keyName ;
 
 
 
@@ -43,15 +43,16 @@ public  class Trick {
       //  pileCards = new LinkedList<>();
         this.dealer=dealer;
        // player = dealer.getPlayers().get(0);
-        maxPlayerName = "";
-        maxRankDeck = "";
-        maxSuitDeck = "";
+//        maxPlayerName = "";
+//        maxRankDeck = "";
+//        maxSuitDeck = "";
+       // keyName="";
 
     }
 
     public void isHeartBroken(){
         boolean isHeartBroken = Player.getIsIsHeartBroken();
-        System.out.println(isHeartBroken);
+        System.out.println("is Heart broken? "+isHeartBroken);
     }
 
 
@@ -144,7 +145,7 @@ public  class Trick {
 
         for (Player player : dealer.getPlayers()) {
             //String keyName = player.getName();
-            keyName = player.getName();
+            String keyName = player.getName();
             if (player.cardPlayer.containsKey(keyName)) {
                 String deckInfo = player.cardPlayer.get(keyName);
                 int cardRankInt = extractCardRank(deckInfo);
@@ -156,6 +157,11 @@ public  class Trick {
                     maxRankNum = cardRankInt;
                     maxPlayerName = keyName;
                     maxRankDeck = deckInfo;
+//                    System.out.println(maxRankNum+"max rank num");
+//                    System.out.println(maxPlayerName+"max player name");
+//                    System.out.println(maxRankDeck+"max rank deck");
+
+
 
                 }
             }
@@ -166,11 +172,15 @@ public  class Trick {
         //setMaxPlayerName(keyName);
 
 
-        System.out.println("max player name is :"+maxPlayerName);
+        //System.out.println("max player name is :"+maxPlayerName);
+       // System.out.println("max rank deck is"+maxRankDeck);
 
 
         return maxPlayerName;
 
+    }
+
+    private void setMaxPlayerName(String keyName) {
     }
 
     public  String getMaxPlayerName() {
@@ -180,7 +190,7 @@ public  class Trick {
 
 
     public void playerName() {
-        System.out.println("hiiiiiii"+maxPlayerName);
+        System.out.println("The current trick winner is: "+maxPlayerName);
     }
 //    public boolean isTrickEnded (Player player) {
 //        boolean trickEnded;
