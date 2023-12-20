@@ -11,6 +11,8 @@ public class ActivePlayer extends Player {
     ArrayList<Card> matchedSuits;
     int chosenIndex;
 
+    boolean kanUseHeart = false;
+
     public ActivePlayer(String name) {
         super(name);
         matchedSuits = new ArrayList<>();
@@ -41,9 +43,8 @@ public class ActivePlayer extends Player {
 
     //
     public boolean kanUseHeart(){
-        boolean kanUseHeart = true;
-        if (matchedSuits.isEmpty()){
-            kanUseHeart=false;
+        if (kanUseHeart){
+           useHeart();
         }
         return kanUseHeart;
     }
@@ -70,8 +71,6 @@ public class ActivePlayer extends Player {
 
 
 
-
-
 //
     public boolean kanFollowSuit() {
         boolean hasLeadingSuit = false;
@@ -84,6 +83,7 @@ public class ActivePlayer extends Player {
         }
         return hasLeadingSuit;
     }
+
 
 //
     public boolean followsSuit(int chosenIndex) {
@@ -147,24 +147,37 @@ public class ActivePlayer extends Player {
 
             }
 
+
+
     public void findStartCard() {
-        //ArrayList<Card>card= getCards();
-        ArrayList<Card> differentSuit = new ArrayList<>();
-        for (Card checkCard : getCards()) {
-
-            differentSuit.add(checkCard);
+        System.out.println("Your turn:");
+        playerHandNumbered();
+        do {
+            System.out.println("Enter the number of the card you want to play:");
+            chosenIndex = input.nextInt();
         }
+        while (chosenIndex < 1 || chosenIndex > getCards().size());
 
-        int suitIndex;
-        Card chosenCard;
+        if(!(suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode()))) {
 
-        if (!(differentSuit.isEmpty())) {
-            suitIndex = getRandomSuit().nextInt(differentSuit.size());
-            chosenCard = differentSuit.get(suitIndex);
-            addCardToPile(chosenCard);
-            getCards().remove(chosenCard);
+            addChosenRankToPile();
+
+
+        } else {
+            if(suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())){
+                if(kanUseHeart){
+                    addChosenRankToPile();
+
+                }
+                 else {
+                     System.out.println("Heart is not broken choose another card:");
+                     chosenIndex = input.nextInt();
+                     addChosenRankToPile();
+
+                }
+
+            }
         }
-
     }
 
 

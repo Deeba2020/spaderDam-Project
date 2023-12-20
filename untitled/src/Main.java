@@ -53,6 +53,7 @@ public class Main {
         trick.trickWinner();
 
         NextTrick nextTrick = new NextTrick(dealer);
+        nextTrick.isWinner();
 
        // System.out.println("max player name issss"+Trick.getMaxPlayerName());
 
