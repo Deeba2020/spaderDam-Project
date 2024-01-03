@@ -24,7 +24,8 @@ public class NextTrick extends Trick{
 
     public Player findLeadingPlayer() {
         for (Player player : players) {
-            if (player.isLeadingPlayer()) return player;
+            //if (player.isLeadingPlayer()) return player;
+            if (player.getName().equals(getMaxPlayerName())) return player;
         }
         return null;
     }
@@ -35,9 +36,14 @@ public class NextTrick extends Trick{
     public void playNextTrick() {
         findPreviousWinner();
         Player leadingPlayer = findLeadingPlayer();
+//        String leadingPlayer = getMaxPlayerName();
 
         System.out.println(leadingPlayer.getName() + " is winner of previous trick and can start the game " );
-        leadingPlayer.findStartCard();
+        if (leadingPlayer instanceof AIPlayer) {
+            ((AIPlayer) leadingPlayer).findStartCard();
+        }else if(leadingPlayer instanceof ActivePlayer) {
+            ((ActivePlayer) leadingPlayer).findStartCard();
+        }
         nextPlayer();
     }
 

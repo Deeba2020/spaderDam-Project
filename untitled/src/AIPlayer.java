@@ -41,7 +41,7 @@ public class AIPlayer extends Player {
 
     }
 
-    public void findStartCard() {
+    public  void findStartCard() {
         //ArrayList<Card>card= getCards();
         ArrayList<Card> differentSuit = new ArrayList<>();
         for (Card checkCard : getCards()) {

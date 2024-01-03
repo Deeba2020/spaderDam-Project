@@ -1,5 +1,6 @@
 import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ActivePlayer extends Player {
@@ -113,43 +114,115 @@ public class ActivePlayer extends Player {
 
 
 //throw new InputMismatchException(); how to fit this exception to below method?
-            public void findSuit () {
-                System.out.println("Your turn:");
-                playerHandNumbered();
-                do {
-                    System.out.println("Enter the number of the card you want to play:");
-                    chosenIndex = input.nextInt();
+//            public void findSuit () {
+//                System.out.println("Your turn:");
+//                playerHandNumbered();
+//                do {
+//                    System.out.println("Enter the number of the card you want to play:");
+//                    chosenIndex = input.nextInt();
+//                }
+//                while (chosenIndex < 1 || chosenIndex > getCards().size());
+//
+//                if(kanFollowSuit()) {
+//
+//                    if (!followsSuit(chosenIndex)) {
+//
+//                        do {
+//                            System.out.println("The leading suit of current trick is " + extractPileSuit() + " you have the leading suit you must play it ");
+//                            chosenIndex = input.nextInt();
+//
+//                        }
+//                        while (chosenIndex < 1 || chosenIndex > getCards().size() || !followsSuit(chosenIndex));
+//                        addChosenRankToPile();
+//
+//                    } else if (followsSuit(chosenIndex)) {
+//                        addChosenRankToPile();
+//                    }
+//
+//
+//                }
+//                else {
+//                    if(suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())){
+//                        useHeart();
+//                    } else {
+//                        addChosenRankToPile();
+//                    }
+//                }
+//
+//            }
+
+    public void findSuit() {
+        System.out.println("Your turn:");
+        playerHandNumbered();
+        //int chosenIndex;
+
+        do {
+            System.out.println("Enter the number of the card you want to play:");
+            try {
+                chosenIndex = input.nextInt();
+                input.nextLine(); // Consume the newline character
+                if (chosenIndex < 1 || chosenIndex > getCards().size()) {
+                    throw new InputMismatchException();
                 }
-                while (chosenIndex < 1 || chosenIndex > getCards().size());
-
-                if(kanFollowSuit()) {
-
-                    if (!followsSuit(chosenIndex)) {
-
-                        do {
-                            System.out.println("The leading suit of current trick is " + extractPileSuit() + " you have the leading suit you must play it ");
-                            chosenIndex = input.nextInt();
-
-                        }
-                        while (chosenIndex < 1 || chosenIndex > getCards().size() || !followsSuit(chosenIndex));
-
-                    }
-
-                    addChosenRankToPile();
-
-                } else {
-                    if(suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())){
-                        useHeart();
-                    } else {
-                        addChosenRankToPile();
-                    }
-                }
-
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid card number.");
+                input.nextLine(); // Clear the invalid input from the scanner
+                chosenIndex = 0; // Reset chosenIndex to loop again
             }
+        } while (chosenIndex < 1 || chosenIndex > getCards().size());
+
+        if (kanFollowSuit() && !followsSuit(chosenIndex)) {
+            handleInvalidCardSelection();
+        } else if (!kanUseHeart() && suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())) {
+            System.out.println("You can't use hearts as hearts are not broken yet.");
+        } else if (kanFollowSuit() && followsSuit(chosenIndex)) {
+            addChosenRankToPile();
+        }
+    }
 
 
 
-    public void findStartCard() {
+
+    // Extracted method to handle invalid card selection when not following suit
+    private void handleInvalidCardSelection() {
+        System.out.println("The leading suit of the current trick is " + extractPileSuit() +
+                ". You must play a card following this suit.");
+        findSuit(); // Re-prompt the user to choose a valid card
+    }
+
+// Other methods remain the same or can be further refactored similarly
+
+
+//    public void findStartCard() {
+//        System.out.println("Your turn:");
+//        playerHandNumbered();
+//        int chosenIndex;
+//
+//        do {
+//            System.out.println("Enter the number of the card you want to play:");
+//            chosenIndex = input.nextInt();
+//        } while (chosenIndex < 1 || chosenIndex > getCards().size());
+//
+//        if (!suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())) {
+//            addChosenRankToPile(chosenIndex);
+//        } else {
+//            if (kanUseHeart) {
+//                addChosenRankToPile(chosenIndex);
+//            } else {
+//                do {
+//                    System.out.println("Heart is not broken. Choose another card:");
+//                    chosenIndex = input.nextInt();
+//                } while (suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode()));
+//                addChosenRankToPile(chosenIndex);
+//            }
+//        }
+//    }
+
+
+
+
+
+    public  void findStartCard() {
         System.out.println("Your turn:");
         playerHandNumbered();
         do {
@@ -170,8 +243,9 @@ public class ActivePlayer extends Player {
 
                 }
                  else {
-                     System.out.println("Heart is not broken choose another card:");
-                     chosenIndex = input.nextInt();
+                     do {System.out.println("Heart is not broken choose another card:");
+                     chosenIndex = input.nextInt();}
+                     while (suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode()));
                      addChosenRankToPile();
 
                 }
@@ -182,25 +256,6 @@ public class ActivePlayer extends Player {
 
 
 
-//    public void findSuit () {
-//        System.out.println("Your turn:");
-//        playerHandNumbered();
-//        int chosenIndex;
-//
-//        do {
-//            System.out.println("Enter the number of the card you want to play:");
-//            chosenIndex = input.nextInt();
-//
-//        }
-//        while (chosenIndex < 1 || chosenIndex > getCards().size());
-//
-//        Card chosenCard = getCards().get(chosenIndex - 1);
-//        System.out.println("You chose: " + chosenCard.getSuitValue().getUnicode() + chosenCard.getSuits().getUnicode());
-//        addCardToPile(chosenCard);
-//        getCards().remove(chosenCard);
-//        playerHandNumbered();
-//
-//    }
 
 
     //    public void useHeart() {

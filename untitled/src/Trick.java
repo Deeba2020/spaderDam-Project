@@ -28,7 +28,7 @@ public  class Trick {
 
 
    private static String maxPlayerName="";
-    String maxRankDeck="" ;
+   String maxRankDeck="" ;
     String maxSuitDeck ="";
    // String keyName ;
 
@@ -47,6 +47,7 @@ public  class Trick {
 //        maxRankDeck = "";
 //        maxSuitDeck = "";
        // keyName="";
+
 
     }
 
@@ -123,7 +124,8 @@ public  class Trick {
 
 
     public boolean isWinner(){
-        updateTrick();
+        System.out.println("is winner executed");
+        //updateTrick();
         boolean isWinner =false;
         for(Player player:dealer.getPlayers()){
             if(player.getName().equals(trickWinner())){

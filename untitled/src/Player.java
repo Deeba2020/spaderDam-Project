@@ -37,7 +37,7 @@ public  abstract class Player {
         sameSuit = new Random();
         randomSuit = new Random();
         cardToPile = new ArrayList<>();
-        //trick = new Trick(new Dealer(d));
+       // trick = new Trick(new Dealer(d));
         cardWon = new ArrayList<>();
         cardList = new ArrayList<>();
         cardPlayer=new HashMap<>();
@@ -144,10 +144,11 @@ public  abstract class Player {
     //to find matching and  non-matching suit in players hand and add it  to the trickPile
     public abstract void findSuit();
 
-    public abstract void findStartCard();
+    public  abstract  void findStartCard();
 
     //to add cards to pile of player hand and also print them out
     public void addCardPlayerPile(){
+
         playerPile.addAll(pileCards);
         pileCards.clear();
         playerPileHand();
