@@ -1,6 +1,6 @@
 import java.util.*;
 
-public  abstract class Player {
+public   class Player {
     private String name;
     private ArrayList<Card> cards;
 
@@ -15,6 +15,8 @@ public  abstract class Player {
     private ArrayList<Card> playerPile;
 
     private boolean leadingPlayer;
+
+    boolean kanUseHeart = false;
 
 
 
@@ -54,6 +56,19 @@ public  abstract class Player {
     public ArrayList<Card> getCards() {
         return cards;
     }
+
+//    public static boolean getIsIsHeartBroken() {
+//        return isHeartBroken;
+//    }
+
+    public boolean kanUseHeart(){
+        if (kanUseHeart){
+            useHeart();
+        }
+        return kanUseHeart;
+    }
+
+    public  void useHeart() {}
 
 
 
@@ -142,9 +157,9 @@ public  abstract class Player {
 
 
     //to find matching and  non-matching suit in players hand and add it  to the trickPile
-    public abstract void findSuit();
+    public  void findSuit(){}
 
-    public  abstract  void findStartCard();
+    public void findStartCard(){}
 
     //to add cards to pile of player hand and also print them out
     public void addCardPlayerPile(){

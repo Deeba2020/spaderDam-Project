@@ -12,7 +12,7 @@ public class ActivePlayer extends Player {
     ArrayList<Card> matchedSuits;
     int chosenIndex;
 
-    boolean kanUseHeart = false;
+    //boolean kanUseHeart = false;
 
     public ActivePlayer(String name) {
         super(name);
@@ -43,12 +43,12 @@ public class ActivePlayer extends Player {
 //    }
 
     //
-    public boolean kanUseHeart(){
-        if (kanUseHeart){
-           useHeart();
-        }
-        return kanUseHeart;
-    }
+//    public boolean kanUseHeart(){
+//        if (kanUseHeart){
+//           useHeart();
+//        }
+//        return kanUseHeart;
+//    }
 
     //
 //    public void useHeart() {
@@ -173,9 +173,11 @@ public class ActivePlayer extends Player {
 
         if (kanFollowSuit() && !followsSuit(chosenIndex)) {
             handleInvalidCardSelection();
-        } else if (!kanUseHeart() && suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())) {
+        } else if (getIsIsHeartBroken()== false && suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())) {
             System.out.println("You can't use hearts as hearts are not broken yet.");
         } else if (kanFollowSuit() && followsSuit(chosenIndex)) {
+            addChosenRankToPile();
+        } else if (getIsIsHeartBroken()== true && suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())) {
             addChosenRankToPile();
         }
     }

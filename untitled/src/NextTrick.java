@@ -34,15 +34,17 @@ public class NextTrick extends Trick{
 
 
     public void playNextTrick() {
-        findPreviousWinner();
+//        findPreviousWinner();
+        isWinner();
         Player leadingPlayer = findLeadingPlayer();
+        Player trickWinner = findTrickWinnerPlayer();
 //        String leadingPlayer = getMaxPlayerName();
 
-        System.out.println(leadingPlayer.getName() + " is winner of previous trick and can start the game " );
-        if (leadingPlayer instanceof AIPlayer) {
-            ((AIPlayer) leadingPlayer).findStartCard();
-        }else if(leadingPlayer instanceof ActivePlayer) {
-            ((ActivePlayer) leadingPlayer).findStartCard();
+        System.out.println(leadingPlayer.getName() + " is winner of previous trick and can start the game runnnn " );
+        if (trickWinner instanceof AIPlayer) {
+            trickWinner.findStartCard();
+        }else if(trickWinner instanceof ActivePlayer) {
+            trickWinner.findStartCard();
         }
         nextPlayer();
     }
@@ -58,6 +60,7 @@ public class NextTrick extends Trick{
 
             if (p0.getName().equals(getMaxPlayerName())) {
                 // System.out.println(p0.getName() + " has " + getSTART_CARD().getSuitValue().getUnicode() + " of " + getSTART_CARD().getSuits().getUnicode() + " and can start the game " + getSMILEY_FACE());
+                p0.findStartCard();
                 p1.findSuit();
                 p2.findSuit();
                 p3.findSuit();
@@ -65,18 +68,21 @@ public class NextTrick extends Trick{
 
             } else if (p1.getName().equals(getMaxPlayerName())) {
                 // System.out.println(p1.getName() + " has " + getSTART_CARD().getSuitValue().getUnicode() + " of " + getSTART_CARD().getSuits().getUnicode() + " and can start the game " + getSMILEY_FACE());
+                p1.findStartCard();
                 p2.findSuit();
                 p3.findSuit();
                 p0.findSuit();
                 break;
             } else if (p2.getName().equals(getMaxPlayerName())) {
                 // System.out.println(p2.getName() + " has " + getSTART_CARD().getSuitValue().getUnicode() + " of " + getSTART_CARD().getSuits().getUnicode() + " and can start the game " + getSMILEY_FACE());
+                p2.findStartCard();
                 p3.findSuit();
                 p0.findSuit();
                 p1.findSuit();
                 break;
             } else if (p3.getName().equals(getMaxPlayerName())) {
                 //System.out.println(p3.getName() + " has " + getSTART_CARD().getSuitValue().getUnicode() + " of " + getSTART_CARD().getSuits().getUnicode() + " and can start the game " + getSMILEY_FACE());
+                p3.findStartCard();
                 p0.findSuit();
                 p1.findSuit();
                 p2.findSuit();

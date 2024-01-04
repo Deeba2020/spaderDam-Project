@@ -12,10 +12,10 @@ public class Round {
         // ... (the rest of your game initialization code)
 
         // Create the players, dealer, and other necessary game objects
-        Player a = new ActivePlayer(userName);
-        Player b = new AIPlayer("AIOne");
-        Player c = new AIPlayer("AITwo");
-        Player d = new AIPlayer("AIThree");
+        ActivePlayer a = new ActivePlayer(userName);
+        AIPlayer b = new AIPlayer("AIOne");
+        AIPlayer c = new AIPlayer("AITwo");
+        AIPlayer d = new AIPlayer("AIThree");
 
         Dealer dealer = new Dealer();
         dealer.addPlayer(a, b, c, d);
@@ -39,7 +39,7 @@ public class Round {
         do{
 //            nextTrick.findPreviousWinner();
             nextTrick.updateTrick();
-            nextTrick.isWinner();
+           // nextTrick.isWinner();
             nextTrick.playNextTrick();
             nextTrick.isWinner();
 //

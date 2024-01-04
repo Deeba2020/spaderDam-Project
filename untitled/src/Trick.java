@@ -163,24 +163,42 @@ public  class Trick {
 //                    System.out.println(maxPlayerName+"max player name");
 //                    System.out.println(maxRankDeck+"max rank deck");
 
-
-
                 }
             }
         }
 
-
-
-        //setMaxPlayerName(keyName);
-
-
-        //System.out.println("max player name is :"+maxPlayerName);
-       // System.out.println("max rank deck is"+maxRankDeck);
-
-
         return maxPlayerName;
 
     }
+
+    public Player findTrickWinnerPlayer() {
+        int maxRankNum = 0;
+        Player winner =new Player("a");
+
+        for (Player player : dealer.getPlayers()) {
+            String keyName = player.getName();
+
+            if (player.cardPlayer.containsKey(keyName)) {
+                String deckInfo = player.cardPlayer.get(keyName);
+                int cardRankInt = extractCardRank(deckInfo);
+                maxSuitDeck = extractCardSuit(deckInfo);
+
+                String pileSuit = player.extractPileSuit();
+
+                if (pileSuit.equals(maxSuitDeck) && cardRankInt > maxRankNum) {
+                    maxRankNum = cardRankInt;
+                    winner = player;
+                    maxRankDeck = deckInfo;
+                }
+            }
+        }
+
+        return winner;
+    }
+
+
+
+
 
     private void setMaxPlayerName(String keyName) {
     }
