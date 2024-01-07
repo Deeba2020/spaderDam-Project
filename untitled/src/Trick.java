@@ -16,6 +16,8 @@ public  class Trick {
     //condition in the main to allow user to only use alphabet for the name
     //GameEnd() when total score of one of user reaches 100 points
 
+    AIPlayer aiWinner=null;
+    ActivePlayer activeWinner=null;
     private final int MAX_TRICK = 13;
 
     private ArrayList<Player>players;
@@ -27,10 +29,11 @@ public  class Trick {
     private static int trickNo=0;
 
 
-   private static String maxPlayerName="";
+   private static   String maxPlayerName="";
    String maxRankDeck="" ;
     String maxSuitDeck ="";
    // String keyName ;
+   private Suit leadingSuit;
 
 
 
@@ -159,6 +162,23 @@ public  class Trick {
                     maxRankNum = cardRankInt;
                     maxPlayerName = keyName;
                     maxRankDeck = deckInfo;
+
+                    if (player instanceof AIPlayer){
+                        System.out.println("winner is AI in trick winner method");
+                        aiWinner = (AIPlayer) player;
+//                        aiWinner.addCardPlayerPile();
+//                        aiWinner.findStartCard(); // Call AIP
+//                        nextPlayer();
+
+                    } else if (player instanceof ActivePlayer) {
+                        System.out.println("winner is Active in trick winner method");
+                        activeWinner = (ActivePlayer) player;
+//                        activeWinner.addCardPlayerPile();
+//                        activeWinner.findStartCard(); // Call ActivePlayer's findStartCard() method
+//                        nextPlayer();
+                    } else if (player instanceof Player) {
+                        System.out.println("winner is player in trick winner method");
+                    }
 //                    System.out.println(maxRankNum+"max rank num");
 //                    System.out.println(maxPlayerName+"max player name");
 //                    System.out.println(maxRankDeck+"max rank deck");
@@ -171,13 +191,24 @@ public  class Trick {
 
     }
 
-    public Player findTrickWinnerPlayer() {
+
+
+
+
+
+
+
+
+
+    //thissss
+    public void trickWinnerPlayer() {
         int maxRankNum = 0;
-        Player winner =new Player("a");
 
-        for (Player player : dealer.getPlayers()) {
+
+        for (Player player : getDealer().getPlayers()) {
+          //  int maxRankNum = 0;
+            //String keyName = player.getName();
             String keyName = player.getName();
-
             if (player.cardPlayer.containsKey(keyName)) {
                 String deckInfo = player.cardPlayer.get(keyName);
                 int cardRankInt = extractCardRank(deckInfo);
@@ -187,16 +218,36 @@ public  class Trick {
 
                 if (pileSuit.equals(maxSuitDeck) && cardRankInt > maxRankNum) {
                     maxRankNum = cardRankInt;
-                    winner = player;
+                    maxPlayerName = keyName;
+
                     maxRankDeck = deckInfo;
+                    if (player instanceof AIPlayer){
+                        System.out.println("winner is AI");
+                        AIPlayer aiWinner = (AIPlayer) player;
+                        aiWinner.addCardPlayerPile();
+                        aiWinner.findStartCard(); // Call AIP
+                        nextPlayer();
+
+                    } else if (player instanceof ActivePlayer) {
+                        System.out.println("winner is Active");
+                        ActivePlayer activeWinner = (ActivePlayer) player;
+                        activeWinner.addCardPlayerPile();
+                        activeWinner.findStartCard(); // Call ActivePlayer's findStartCard() method
+                        nextPlayer();
+                    } else if (player instanceof Player) {
+                        System.out.println("winner is player");
+                    }
+//                    System.out.println(maxRankNum+"max rank num");
+//                    System.out.println(maxPlayerName+"max player name");
+//                    System.out.println(maxRankDeck+"max rank deck");
+
                 }
             }
         }
 
-        return winner;
+
+
     }
-
-
 
 
 

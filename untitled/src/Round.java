@@ -27,28 +27,37 @@ public class Round {
         d.displayHand();
 
 
-
 //        do { NextTrick trick = new NextTrick(); trick.executeTrick(); }
 //        while trick.getNumber() <= 13;
 
         FirstTrick firstTrick = new FirstTrick(dealer);
         NextTrick nextTrick = new NextTrick(dealer);
         firstTrick.playFirstTrick();
-        nextTrick.isWinner();
+        //nextTrick.isWinner();
 
-        do{
+        do {
 //            nextTrick.findPreviousWinner();
+            //only update trick
             nextTrick.updateTrick();
-           // nextTrick.isWinner();
-            nextTrick.playNextTrick();
-            nextTrick.isWinner();
+            // nextTrick.isWinner();
+            //nextTrick.playNextTrick();
+           // nextTrick.trickWinnerPlayer();
+            nextTrick.trickWinnerPlayer();
+//            if (nextTrick.findTrickWinnerPlayer() instanceof AIPlayer) {
+//                 nextTrick.findTrickWinnerPlayer().findStartCard();
+//            } else if (nextTrick.findTrickWinnerPlayer() instanceof ActivePlayer) {
+//                nextTrick.findTrickWinnerPlayer().findStartCard();
+//            } else if (nextTrick.findTrickWinnerPlayer() instanceof Player) {
+//                System.out.println("winner type is player");
+                nextTrick.nextPlayer();
+               // nextTrick.isWinner();
 //
-           // nextTrick.nextPlayer();
-            //nextTrick.findPreviousWinner();
-           // nextTrick.isWinner();
-        } while (firstTrick.getTrickNo()<=13);
+                // nextTrick.nextPlayer();
+                //nextTrick.findPreviousWinner();
+                // nextTrick.isWinner();
 
-
+            }
+            while (firstTrick.getTrickNo() <= 13) ;
 
 
 //    private int roundNum;
@@ -98,8 +107,10 @@ public class Round {
 
 //    }
 
+        }
     }
-}
+
+
 
 
 

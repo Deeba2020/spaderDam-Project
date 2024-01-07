@@ -89,16 +89,24 @@ public class ActivePlayer extends Player {
 //
     public boolean followsSuit(int chosenIndex) {
         boolean followSuit = false;
-        if (kanFollowSuit()) {
-
-            for (Card cards : matchedSuits) {
-
-                if (cards.getSuits().getUnicode().equals(suitOfRank(chosenIndex))) {
+                if (topTrickPileCard().getSuits().getUnicode().equals(suitOfRank(chosenIndex))) {
                     followSuit = true;
-                }
+
+            }
+
+        return followSuit;
+    }
+
+    public boolean hasMatchingSuit() {
+        boolean hasLeadingSuit = false;
+        Card topCard = topTrickPileCard();
+        for (Card checkCard : getCards()) {
+            if (checkCard.getSuits().getUnicode().equals(topCard.getSuits().getUnicode())) {
+                matchedSuits.add(checkCard);
+                hasLeadingSuit = true;
             }
         }
-        return followSuit;
+        return hasLeadingSuit;
     }
 
 
@@ -171,15 +179,27 @@ public class ActivePlayer extends Player {
             }
         } while (chosenIndex < 1 || chosenIndex > getCards().size());
 
-        if (kanFollowSuit() && !followsSuit(chosenIndex)) {
-            handleInvalidCardSelection();
-        } else if (getIsIsHeartBroken()== false && suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())) {
-            System.out.println("You can't use hearts as hearts are not broken yet.");
-        } else if (kanFollowSuit() && followsSuit(chosenIndex)) {
+        if (hasMatchingSuit() && !followsSuit(chosenIndex)) {
+
+                handleInvalidCardSelection();
+
+
+        } else if (!hasMatchingSuit() && suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())) {
+            if(getIsIsHeartBroken()||hasOnlyHearts()){
+            System.out.println("You can  use hearts .");
             addChosenRankToPile();
-        } else if (getIsIsHeartBroken()== true && suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())) {
+            setIsHeartBroken(true);}
+            else {
+
+                    handleInvalidCardSelection();
+
+            }
+        } else if (hasMatchingSuit() && followsSuit(chosenIndex)) {
+            addChosenRankToPile();
+        } else if (!hasMatchingSuit() && !followsSuit(chosenIndex)) {
             addChosenRankToPile();
         }
+
     }
 
 
@@ -222,40 +242,90 @@ public class ActivePlayer extends Player {
 
 
 
+//this
+//    public  void findStartCard() {
+//        System.out.println("Your turn:");
+//        playerHandNumbered();
+//        do {
+//            System.out.println("Enter the number of the card you want to play:");
+//            chosenIndex = input.nextInt();
+//        }
+//        while (chosenIndex < 1 || chosenIndex > getCards().size());
+//
+//        if(!(suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode()))) {
+//
+//            addChosenRankToPile();
+//
+//
+//        } else {
+//            if(suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())){
+//                if(getIsIsHeartBroken()){
+//                    addChosenRankToPile();
+//
+//                } else if (suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())&& !getIsIsHeartBroken()) {
+//
+//                    for (Card card: getCardList()){
+//                        if(!card.getSuits().getUnicode().equals(Suit.SPADE.getUnicode())||!card.getSuits().getUnicode().equals(Suit.DIAMOND.getUnicode())
+//                        ||!card.getSuits().getUnicode().equals(Suit.CLUB.getUnicode())){
+//                            System.out.println("heart is not broken but since you have only heart you can use it");
+//                            addChosenRankToPile();
+//                        }
+//                    }
+//                }
+//                     do {System.out.println("Heart is not broken choose another card:");
+//                     chosenIndex = input.nextInt();}
+//                     while (suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode()));
+//                     addChosenRankToPile();
+//
+//
+//
+//            }
+//        }
+//    }
+//
 
 
-    public  void findStartCard() {
+
+    public void findStartCard() {
         System.out.println("Your turn:");
         playerHandNumbered();
+
+
         do {
             System.out.println("Enter the number of the card you want to play:");
             chosenIndex = input.nextInt();
-        }
-        while (chosenIndex < 1 || chosenIndex > getCards().size());
+        } while (chosenIndex < 1 || chosenIndex > getCards().size());
 
-        if(!(suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode()))) {
 
+
+        if (suitOfRank(chosenIndex) != Suit.HEART.getUnicode()) {
             addChosenRankToPile();
-
-
         } else {
-            if(suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode())){
-                if(kanUseHeart){
-                    addChosenRankToPile();
+            //boolean isHeartsBroken = getIsIsHeartBroken();
+            //boolean hasOnlyHearts = hasOnlyHearts();
 
-                }
-                 else {
-                     do {System.out.println("Heart is not broken choose another card:");
+            if (getIsIsHeartBroken() || !hasOnlyHearts()) {
+                addChosenRankToPile();
+            } else {
+
+                do {System.out.println("Heart is not broken choose another card:");
                      chosenIndex = input.nextInt();}
                      while (suitOfRank(chosenIndex).equals(Suit.HEART.getUnicode()));
                      addChosenRankToPile();
-
-                }
-
             }
         }
     }
 
+    public boolean hasOnlyHearts() {
+        for (Card card : getCardList()) {
+            if (!(card.getSuits().getUnicode() .equals(Suit.HEART.getUnicode()))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+// Other methods like getChosenCard(), addChosenRankToPile(), and other necessary methods.
 
 
 

@@ -49,6 +49,10 @@ public   class Player {
 
     }
 
+    public ArrayList<Card> getCardList() {
+        return cardList;
+    }
+
     public String getName() {
         return name;
     }
